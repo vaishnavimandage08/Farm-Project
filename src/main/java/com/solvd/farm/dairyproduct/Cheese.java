@@ -6,10 +6,11 @@ public class Cheese extends DairyProduct {
     private double weight;
     private long expiryDate;
 
-    public Cheese(int price, double fatContent, String name,long expiryDate) {
-        super(price,fatContent,name);
+    public Cheese(int price, double fatContent, String name, long expiryDate) {
+        super(price, fatContent, name);
         this.expiryDate = expiryDate;
     }
+
     public void setExpiryDate(long expiryDate) {
         this.expiryDate = expiryDate;
     }

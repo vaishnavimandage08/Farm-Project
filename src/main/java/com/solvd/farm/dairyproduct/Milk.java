@@ -5,7 +5,7 @@ public class Milk extends DairyProduct {
     private boolean pasteurized;
 
     public Milk(long expiryDate, boolean pasteurized, int price, double fatContent, String name) {
-        super(price,fatContent,name);
+        super(price, fatContent, name);
         this.expiryDate = expiryDate;
         this.pasteurized = pasteurized;
     }

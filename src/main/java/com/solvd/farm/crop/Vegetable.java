@@ -1,10 +1,10 @@
 package main.java.com.solvd.farm.crop;
 
-public class Vegetable extends Crop{
+public class Vegetable extends Crop {
     private int maturityTimeInDays;
 
     public Vegetable(String name, int price, int maturityTimeInDays) {
-        super(name,price);
+        super(name, price);
         this.maturityTimeInDays = maturityTimeInDays;
     }
 
@@ -18,8 +18,6 @@ public class Vegetable extends Crop{
 
     @Override
     public void nameOfCrops() {
-        System.out.println("The crop name: " + name
-                + "\n price: " + price
-                + "\nuses: " + maturityTimeInDays);
+        System.out.println("The crop name: " + name + "\n price: " + price + "\nuses: " + maturityTimeInDays);
     }
 }

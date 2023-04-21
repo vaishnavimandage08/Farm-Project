@@ -14,8 +14,7 @@ public class BuildingManager {
 
     public void displayBuilding() {
         int size = buildingList.size();
-        for (int i = 0; i < size; i++)
-        {
+        for (int i = 0; i < size; i++) {
             Building building = buildingList.get(i);
             System.out.println("Name: " + building.getBuildingName());
             System.out.println("Head Of Department: " + building.getHeadOfDepartment());

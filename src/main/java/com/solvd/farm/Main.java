@@ -26,11 +26,11 @@ public class Main {
         cropProductionManager.displayCrop();
 
         BuildingManager buildingManager = new BuildingManager();
-        Storage storage = new Storage("Agree","Jonathan", 100, "cold");
+        Storage storage = new Storage("Agree", "Jonathan", 100, "cold");
         Barn barn = new Barn("Dairy barn", "Perceive", 50, true);
         buildingManager.addBuilding(storage);
         buildingManager.addBuilding(barn);
         buildingManager.displayBuilding();
 
-            }
-        }
+    }
+}

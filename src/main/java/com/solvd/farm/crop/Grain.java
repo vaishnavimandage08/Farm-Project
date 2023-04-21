@@ -1,11 +1,11 @@
 package main.java.com.solvd.farm.crop;
 
-public class Grain extends Crop{
+public class Grain extends Crop {
     private String uses;
     private String nutritionalValue;
 
-    public Grain( String name,int price,String uses, String nutritionalValue) {
-        super(name,price);
+    public Grain(String name, int price, String uses, String nutritionalValue) {
+        super(name, price);
         this.uses = uses;
         this.nutritionalValue = nutritionalValue;
     }
@@ -28,8 +28,6 @@ public class Grain extends Crop{
 
     @Override
     public void nameOfCrops() {
-        System.out.println("The crop name: " + name
-                + "\n price: " + price
-                + "\nuses: " + nutritionalValue);
+        System.out.println("The crop name: " + name + "\n price: " + price + "\nuses: " + nutritionalValue);
     }
 }

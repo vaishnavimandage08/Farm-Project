@@ -5,7 +5,7 @@ public class Butter extends DairyProduct {
     private double fatContent;
 
     public Butter(int price, double fatContent, String name, long expiryDate) {
-        super(price,fatContent,name);
+        super(price, fatContent, name);
         this.expiryDate = expiryDate;
     }
 

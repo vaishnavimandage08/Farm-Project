@@ -3,6 +3,7 @@ package main.java.com.solvd.farm;
 import main.java.com.solvd.farm.employee.Employee;
 
 import java.util.ArrayList;
+
 public class EmployeeManager {
     ArrayList<Employee> employeeList = new ArrayList<>();
 
@@ -12,8 +13,7 @@ public class EmployeeManager {
 
     public void displayEmployees() {
         int size = employeeList.size();
-        for (int i = 0; i < size; i++)
-        {
+        for (int i = 0; i < size; i++) {
             Employee employee = employeeList.get(i);
             System.out.println("Name: " + employee.getName());
             System.out.println("ID: " + employee.getEmployeeID());

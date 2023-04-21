@@ -1,11 +1,11 @@
 package main.java.com.solvd.farm.building;
 
-public class Barn extends Building{
+public class Barn extends Building {
     private boolean isClean;
 
     public Barn(String buildingName, String headOfDepartment, int capacity, boolean isClean) {
-       super(buildingName,headOfDepartment,capacity);
-       this.isClean = isClean;
+        super(buildingName, headOfDepartment, capacity);
+        this.isClean = isClean;
     }
 
     public boolean isClean() {

@@ -1,10 +1,10 @@
 package main.java.com.solvd.farm.building;
 
-public class Storage extends Building{
+public class Storage extends Building {
 
     private String type;
 
-    public Storage(String buildingName, String headOfDepartment, int capacity,String type ) {
+    public Storage(String buildingName, String headOfDepartment, int capacity, String type) {
         super(buildingName, headOfDepartment, capacity);
         this.type = type;
     }
@@ -19,8 +19,6 @@ public class Storage extends Building{
 
     @Override
     public void nameOfHeadDepartment() {
-        System.out.println("The Building name: " + buildingName
-                + "\nHead Of Department: " + headOfDepartment
-                + "\nBuilding capacity: " + Capacity);
+        System.out.println("The Building name: " + buildingName + "\nHead Of Department: " + headOfDepartment + "\nBuilding capacity: " + Capacity);
     }
 }

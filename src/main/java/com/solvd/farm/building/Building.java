@@ -34,5 +34,6 @@ public abstract class Building {
     public void setCapacity(int capacity) {
         Capacity = capacity;
     }
+
     public abstract void nameOfHeadDepartment();
 }
