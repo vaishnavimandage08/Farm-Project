@@ -1,11 +1,16 @@
 package main.java.com.solvd.farm.employee;
 
-public abstract class Employee {
+public abstract class Employee implements ILogin, IExtraWorkingHours {
     protected String name;
     protected String emailAddress;
     protected String department;
     protected long phoneNumber;
     protected int employeeID;
+    protected long timeIn;
+    protected long timeOut;
+
+    protected final int EXPECTED_HOURS = 6;
+    public static int totalHours;
 
     public Employee(String name, String emailAddress, long phoneNumber, int employeeID) {
         this.name = name;
@@ -35,6 +40,13 @@ public abstract class Employee {
         return phoneNumber;
     }
 
+    public static int getTotalHours() {
+        return totalHours;
+    }
+    public void setTotalHours(int hours) {
+        this.totalHours = hours;
+    }
+
     public int getEmployeeID() {
         return employeeID;
     }
@@ -52,5 +64,13 @@ public abstract class Employee {
     }
 
     public abstract void employeeDetails();
+
+    public long getTimeIn() {
+        return timeIn;
+    }
+
+    public long getTimeOut() {
+        return timeOut;
+    }
 
 }

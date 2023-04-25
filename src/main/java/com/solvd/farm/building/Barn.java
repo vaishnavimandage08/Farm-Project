@@ -18,9 +18,17 @@ public class Barn extends Building {
 
     @Override
     public void nameOfHeadDepartment() {
-        System.out.println("The Building name: " + buildingName
-                + "\nHead Of Department: " + headOfDepartment
-                + "\nBuilding capacity: " + Capacity);
-
+        System.out.println("The Building name: " + buildingName + "\nHead Of Department: " + headOfDepartment + "\nBuilding capacity: " + Capacity);
     }
+
+    @Override
+    public void lock() {
+        if (locked) {
+            System.out.println("locked");
+        } else {
+            System.out.println("unlocked");
+
+        }
+    }
+
 }

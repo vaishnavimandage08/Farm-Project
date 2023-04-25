@@ -1,9 +1,13 @@
 package main.java.com.solvd.farm.building;
 
-public abstract class Building {
+public abstract class Building implements ISecurity {
     protected String buildingName;
     protected String headOfDepartment;
     protected int Capacity;
+    public boolean locked;
+    public void setLocked(boolean locked) {
+        this.locked = locked;
+    }
 
     public Building(String buildingName, String headOfDepartment, int capacity) {
         this.buildingName = buildingName;

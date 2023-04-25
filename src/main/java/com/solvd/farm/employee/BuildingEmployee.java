@@ -1,7 +1,5 @@
 package main.java.com.solvd.farm.employee;
 
-import main.java.com.solvd.farm.employee.Employee;
-
 public class BuildingEmployee extends Employee {
     private String department;
 
@@ -12,5 +10,25 @@ public class BuildingEmployee extends Employee {
     @Override
     public void employeeDetails() {
         System.out.println("The employee name: " + emailAddress + "\nEmployee ID: " + employeeID + "\nPhone Number: " + phoneNumber);
+    }
+
+    @Override
+    public void checkIn() {
+        timeIn = System.currentTimeMillis();
+    }
+
+    @Override
+    public void checkOut() {
+        timeOut = System.currentTimeMillis();
+    }
+
+    @Override
+    public void addExtraHours() {
+        int extraHours = (totalHours - EXPECTED_HOURS);
+        if (extraHours > 0) {
+            System.out.println("Extra Hours " + extraHours);
+        } else {
+            System.out.println("No Extra Hours");
+        }
     }
 }

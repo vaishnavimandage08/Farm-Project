@@ -1,12 +1,19 @@
 package main.java.com.solvd.farm.crop;
 
-public abstract class Crop {
+public abstract class Crop implements ISales {
     protected int price;
     protected String name;
+    protected final double expectedRevenue = 2000;
+    protected double realizedRevenue;
 
-    public Crop(String name, int price) {
+    public double getRealizedRevenue() {
+        return realizedRevenue;
+    }
+
+    public Crop(String name, int price, double realizedRevenue) {
         this.price = price;
         this.name = name;
+        this.realizedRevenue = realizedRevenue;
     }
 
     public int getPrice() {
@@ -26,5 +33,9 @@ public abstract class Crop {
     }
 
     public abstract void nameOfCrops();
+
+    public void setRealizedRevenue(double realizedRevenue) {
+        this.realizedRevenue = realizedRevenue;
+    }
 }
 

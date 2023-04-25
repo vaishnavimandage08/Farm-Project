@@ -4,8 +4,8 @@ public class Grain extends Crop {
     private String uses;
     private String nutritionalValue;
 
-    public Grain(String name, int price, String uses, String nutritionalValue) {
-        super(name, price);
+    public Grain(String name, int price, double realizedRevenue, String uses, String nutritionalValue) {
+        super(name, price, realizedRevenue);
         this.uses = uses;
         this.nutritionalValue = nutritionalValue;
     }
@@ -30,4 +30,14 @@ public class Grain extends Crop {
     public void nameOfCrops() {
         System.out.println("The crop name: " + name + "\n price: " + price + "\nuses: " + nutritionalValue);
     }
+
+    @Override
+    public void reportRevenue() {
+        if (realizedRevenue > expectedRevenue) {
+            System.out.println("Congratulations! You have made a profit of $" + (realizedRevenue - expectedRevenue));
+        } else if (realizedRevenue < expectedRevenue) {
+            System.out.println("Sorry! You have incurred a loss of $" + (expectedRevenue - realizedRevenue));
+        }
+    }
+
 }
