@@ -1,20 +1,20 @@
-package main.java.com.solvd.farm.building;
+package com.solvd.farm.building;
 
 public abstract class Building implements ISecurity {
-    protected String buildingName;
-    protected String headOfDepartment;
-    protected int Capacity;
+    private String buildingName;
+    private String headOfDepartment;
+    private int Capacity;
     public boolean locked;
+
     public void setLocked(boolean locked) {
+
         this.locked = locked;
     }
-
     public Building(String buildingName, String headOfDepartment, int capacity) {
         this.buildingName = buildingName;
         this.headOfDepartment = headOfDepartment;
         this.Capacity = capacity;
     }
-
     public String getBuildingName() {
         return buildingName;
     }

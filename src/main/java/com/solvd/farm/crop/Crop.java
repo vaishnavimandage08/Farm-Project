@@ -1,10 +1,10 @@
-package main.java.com.solvd.farm.crop;
+package com.solvd.farm.crop;
 
 public abstract class Crop implements ISales {
-    protected int price;
-    protected String name;
+    private int price;
+    private String name;
     protected final double expectedRevenue = 2000;
-    protected double realizedRevenue;
+    private double realizedRevenue;
 
     public double getRealizedRevenue() {
         return realizedRevenue;

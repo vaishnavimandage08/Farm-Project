@@ -1,4 +1,7 @@
-package main.java.com.solvd.farm.crop;
+package com.solvd.farm.crop;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Grain extends Crop {
     private String uses;
@@ -9,6 +12,7 @@ public class Grain extends Crop {
         this.uses = uses;
         this.nutritionalValue = nutritionalValue;
     }
+    private static Logger logger = LogManager.getLogger(Grain.class);
 
     public String getUses() {
         return uses;
@@ -28,15 +32,15 @@ public class Grain extends Crop {
 
     @Override
     public void nameOfCrops() {
-        System.out.println("The crop name: " + name + "\n price: " + price + "\nuses: " + nutritionalValue);
+        logger.info("The crop name: " + getName() + "\n price: " + getPrice() + "\nuses: " + nutritionalValue);
     }
 
     @Override
     public void reportRevenue() {
-        if (realizedRevenue > expectedRevenue) {
-            System.out.println("Congratulations! You have made a profit of $" + (realizedRevenue - expectedRevenue));
-        } else if (realizedRevenue < expectedRevenue) {
-            System.out.println("Sorry! You have incurred a loss of $" + (expectedRevenue - realizedRevenue));
+        if (getRealizedRevenue() > expectedRevenue) {
+            logger.info("Congratulations! You have made a profit of $" + (getRealizedRevenue() - expectedRevenue));
+        } else if (getRealizedRevenue() < expectedRevenue) {
+            logger.info("Sorry! You have incurred a loss of $" + (expectedRevenue - getRealizedRevenue()));
         }
     }
 

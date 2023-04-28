@@ -1,29 +1,24 @@
-package main.java.com.solvd.farm.dairyproduct;
+package com.solvd.farm.dairyproduct;
 
-import main.java.com.solvd.farm.dairyproduct.DairyProduct;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Cheese extends DairyProduct {
-    private double weight;
     private long expiryDate;
 
     public Cheese(int price, double fatContent, String name, long expiryDate) {
         super(price, fatContent, name);
         this.expiryDate = expiryDate;
     }
-
+    private static Logger logger = LogManager.getLogger(Cheese.class);
     public void setExpiryDate(long expiryDate) {
         this.expiryDate = expiryDate;
     }
-
     public long getExpiryDate() {
         return expiryDate;
     }
-
     @Override
     public void detailsOfProduct() {
-//        System.out.println("The product name: " + DairyProduct.getName()
-//                + "\nPrice: " + DairyProduct.getPrice()
-//                + "\nFat content: " + DairyProduct.getFatcontent()
-//        );
+        logger.info("The product name: " + getName() + "\nPrice: " + getPrice() + "\nFat content: " + getFatContent());
     }
 }

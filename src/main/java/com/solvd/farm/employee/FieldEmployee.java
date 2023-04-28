@@ -1,34 +1,34 @@
-package main.java.com.solvd.farm.employee;
+package com.solvd.farm.employee;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class FieldEmployee extends Employee {
-
     private boolean driverLicence;
-    public  int totalHours;
-
+    public int totalHours;
     public FieldEmployee(String name, String emailAddress, long phoneNumber, int employeeID, boolean driverLicence) {
         super(name, emailAddress, phoneNumber, employeeID);
     }
+    private static Logger logger = LogManager.getLogger(FieldEmployee.class);
     @Override
     public void employeeDetails() {
-        System.out.println("The employee name: " + name + "\nEmployee ID: " + employeeID + "\nPhone Number: " + phoneNumber);
+        logger.info("The employee name: " + getName() + "\nEmployee ID: " + getEmployeeID() + "\nPhone Number: " + getPhoneNumber());
     }
     @Override
     public void checkIn() {
-        timeIn = System.currentTimeMillis();
+        setTimeIn(System.currentTimeMillis());
     }
-
     @Override
     public void checkOut() {
-        timeOut = System.currentTimeMillis();
+        setTimeOut(System.currentTimeMillis());
     }
-
     @Override
     public void addExtraHours() {
         int extraHours = (totalHours - EXPECTED_HOURS);
         if (extraHours > 0) {
-            System.out.println("Extra Hours " + extraHours);
+            logger.info("Extra Hours " + extraHours);
         } else {
-            System.out.println("No Extra Hours ");
+            logger.info("No Extra Hours ");
         }
     }
 }

@@ -1,14 +1,11 @@
-package main.java.com.solvd.farm.employee;
-
+package com.solvd.farm.employee;
 public abstract class Employee implements ILogin, IExtraWorkingHours {
-    protected String name;
-    protected String emailAddress;
-    protected String department;
-    protected long phoneNumber;
-    protected int employeeID;
-    protected long timeIn;
-    protected long timeOut;
-
+    private String name;
+    private String emailAddress;
+    private long phoneNumber;
+    private int employeeID;
+    private long timeIn;
+    private long timeOut;
     protected final int EXPECTED_HOURS = 6;
     public static int totalHours;
 
@@ -27,22 +24,14 @@ public abstract class Employee implements ILogin, IExtraWorkingHours {
         return this.name;
     }
 
-
     public String getEmailAddress() {
         return emailAddress;
-    }
-
-    public String getDepartment() {
-        return department;
     }
 
     public long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public static int getTotalHours() {
-        return totalHours;
-    }
     public void setTotalHours(int hours) {
         this.totalHours = hours;
     }
@@ -51,22 +40,18 @@ public abstract class Employee implements ILogin, IExtraWorkingHours {
         return employeeID;
     }
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
-
-    public void setEmployeeID(int employeeID) {
-        this.employeeID = employeeID;
-    }
-
-    public void setPhoneNumber(long phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
     public abstract void employeeDetails();
 
     public long getTimeIn() {
         return timeIn;
+    }
+
+    public void setTimeIn(long timeIn) {
+        this.timeIn = timeIn;
+    }
+
+    public void setTimeOut(long timeOut) {
+        this.timeOut = timeOut;
     }
 
     public long getTimeOut() {

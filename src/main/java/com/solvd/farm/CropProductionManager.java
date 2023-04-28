@@ -1,24 +1,38 @@
-package main.java.com.solvd.farm;
+package com.solvd.farm;
 
-import main.java.com.solvd.farm.crop.Crop;
+import com.solvd.farm.crop.Crop;
+import com.solvd.farm.exception.ItemNotFoundException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 
 public class CropProductionManager {
-    ArrayList<Crop> cropList = new ArrayList<>();
+    private ArrayList<Crop> cropList = new ArrayList<>();
 
     public void addCrop(Crop crop) {
         cropList.add(crop);
     }
+
+    private static Logger logger = LogManager.getLogger(CropProductionManager.class);
+
+    public Crop searchCrop(String product) throws ItemNotFoundException {
+        logger.debug("finding a product");
+        for (Crop crop : cropList) {
+            if (crop.getName().equals(product)) {
+                return crop;
+            }
+        }
+        throw new ItemNotFoundException("Item not found: " + product);
+    }
+
     public void displayCrop() {
         int size = cropList.size();
-        for (int i = 0; i < size; i++) {
-            Crop crop = cropList.get(i);
-            System.out.println("Name: " + crop.getName());
-            System.out.println("Price: " + crop.getPrice());
+        for (Crop crop : cropList) {
+            logger.info("Name: " + crop.getName());
+            logger.info(crop.getPrice());
             crop.reportRevenue();
-            System.out.println("--------------------");
-
+            logger.info("--------------------");
         }
     }
 }

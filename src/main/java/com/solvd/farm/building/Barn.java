@@ -1,4 +1,7 @@
-package main.java.com.solvd.farm.building;
+package com.solvd.farm.building;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Barn extends Building {
     private boolean isClean;
@@ -16,19 +19,19 @@ public class Barn extends Building {
         isClean = clean;
     }
 
+    private static Logger logger = LogManager.getLogger(Barn.class);
+
     @Override
     public void nameOfHeadDepartment() {
-        System.out.println("The Building name: " + buildingName + "\nHead Of Department: " + headOfDepartment + "\nBuilding capacity: " + Capacity);
+        logger.info("The Building name: " + getBuildingName() + "\nHead Of Department: " + getHeadOfDepartment() + "\nBuilding capacity: " + getCapacity());
     }
 
     @Override
     public void lock() {
         if (locked) {
-            System.out.println("locked");
+            logger.info("locked");
         } else {
-            System.out.println("unlocked");
-
+            logger.info("unlocked");
         }
     }
-
 }

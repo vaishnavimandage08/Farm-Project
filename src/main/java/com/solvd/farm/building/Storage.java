@@ -1,4 +1,8 @@
-package main.java.com.solvd.farm.building;
+package com.solvd.farm.building;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Storage extends Building implements ITemperatureControl {
     private String type;
     public final int desiredTemp = 30;
@@ -8,6 +12,7 @@ public class Storage extends Building implements ITemperatureControl {
         super(buildingName, headOfDepartment, capacity);
         this.type = type;
     }
+
     public String getType() {
         return type;
     }
@@ -16,27 +21,30 @@ public class Storage extends Building implements ITemperatureControl {
         this.type = type;
     }
 
+    private static Logger logger = LogManager.getLogger(Storage.class);
+
     @Override
     public void nameOfHeadDepartment() {
-        System.out.println("The Building name: " + buildingName + "\nHead Of Department: " + headOfDepartment + "\nBuilding capacity: " + Capacity);
+        logger.info("The Building name: " + getBuildingName() + "\nHead Of Department: " + getHeadOfDepartment() + "\nBuilding capacity: " + getCapacity());
     }
+
     @Override
     public void controlTemperature() {
         if (currentTemp < desiredTemp) {
-            System.out.println("temperature is already at desired level");
+            logger.info("temperature is already at desired level");
         } else if (currentTemp > desiredTemp) {
-            System.out.println("temperature is already at desired level");
-
+            logger.info("temperature is already at desired level");
         } else {
-            System.out.println("temperature is already at desired level");
+            logger.info("temperature is already at desired level");
         }
     }
+
     @Override
     public void lock() {
-        if (locked) System.out.println("locked");
-        else {
-            System.out.println("unlocked");
-
+        if (locked) {
+            logger.info("locked");
+        } else {
+            logger.info("unlocked");
         }
     }
 }
