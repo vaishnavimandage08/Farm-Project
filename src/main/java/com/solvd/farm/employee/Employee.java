@@ -1,11 +1,14 @@
 package com.solvd.farm.employee;
+
+import java.time.LocalDateTime;
+
 public abstract class Employee implements ILogin, IExtraWorkingHours {
     private String name;
     private String emailAddress;
     private long phoneNumber;
     private int employeeID;
-    private long timeIn;
-    private long timeOut;
+    private LocalDateTime timeIn;
+    private LocalDateTime timeOut;
     protected final int EXPECTED_HOURS = 6;
     public static int totalHours;
 
@@ -42,19 +45,19 @@ public abstract class Employee implements ILogin, IExtraWorkingHours {
 
     public abstract void employeeDetails();
 
-    public long getTimeIn() {
-        return timeIn;
-    }
-
-    public void setTimeIn(long timeIn) {
+    public void setTimeIn(LocalDateTime timeIn) {
         this.timeIn = timeIn;
     }
 
-    public void setTimeOut(long timeOut) {
+    public LocalDateTime getTimeIn() {
+        return timeIn;
+    }
+
+    public void setTimeOut(LocalDateTime timeOut) {
         this.timeOut = timeOut;
     }
 
-    public long getTimeOut() {
+    public LocalDateTime getTimeOut() {
         return timeOut;
     }
 

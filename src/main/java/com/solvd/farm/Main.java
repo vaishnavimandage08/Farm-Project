@@ -1,70 +1,48 @@
 package com.solvd.farm;
-
-import com.solvd.farm.building.Barn;
-import com.solvd.farm.building.Storage;
-import com.solvd.farm.crop.Grain;
-import com.solvd.farm.crop.Vegetable;
-import com.solvd.farm.employee.BuildingEmployee;
-import com.solvd.farm.employee.FieldEmployee;
+import com.solvd.farm.exception.InvalidChoiceException;
+import com.solvd.farm.exception.ItemNotFoundException;
+import com.solvd.farm.exception.UserNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+import java.util.Scanner;
 public class Main {
-    private static Logger logger = LogManager.getLogger(Main.class);
+    private static final Logger logger = LogManager.getLogger(Main.class);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UserNotFoundException, ItemNotFoundException, InvalidChoiceException {
         EmployeeManager employeeManager = new EmployeeManager();
-        try {
-            FieldEmployee fieldEmployee = new FieldEmployee("John", "john123@gmail.com", 234532125, 124, true);
-            BuildingEmployee buildingEmployee = new BuildingEmployee("jack", "jack123@gmail.com", "Building", 234532125, 200);
-            employeeManager.checkInEmployee(fieldEmployee);
-            employeeManager.checkInEmployee(buildingEmployee);
-            fieldEmployee.setTotalHours(12);
-            buildingEmployee.setTotalHours(10);
-            employeeManager.displayEmployees();
-            employeeManager.checkOutEmployee(fieldEmployee);
-            employeeManager.checkOutEmployee(buildingEmployee);
-            employeeManager.displayEmployees();
-        } catch (Exception e) {
-            logger.info("Error: " + e.getMessage());
-        }
-
-        try {
-            FieldEmployee fieldEmployee = new FieldEmployee("John", "john123@gmail.com", 234532125, 124, true);
-            employeeManager.checkInEmployee(fieldEmployee);
-        } catch (Exception e) {
-            logger.info("Error: " + e.getMessage());
-        }
-        try {
-            employeeManager.findUserByName("John");
-        } catch (Exception e) {
-            logger.info("Error: " + e.getMessage());
-        }
-
         CropProductionManager cropProductionManager = new CropProductionManager();
-        Grain grain = new Grain("Wheat", 10, 689, "bread", "Protein");
-        Vegetable vegetable = new Vegetable("Spinach", 5, 900.87, 10);
-        cropProductionManager.addCrop(grain);
-        cropProductionManager.addCrop(vegetable);
-        cropProductionManager.displayCrop();
-        try {
-            cropProductionManager.searchCrop("Rice");
-        } catch (Exception e) {
-            logger.info("Error: " + e.getMessage());
-        }
 
-        BuildingManager buildingManager = new BuildingManager();
-        Storage storage = new Storage("Agree", "Jonathan", 100, "cold");
-        Barn barn = new Barn("Dairy barn", "Andrew", 50, true);
-        storage.setLocked(true);
-        barn.setLocked(false);
-        buildingManager.displayBuilding();
-        buildingManager.setTemperatureOfStorage(30);
-        try {
-            buildingManager.addBuilding(storage);
-            buildingManager.addBuilding(barn);
-        } catch (Exception e) {
-            logger.info("Error: " + e.getMessage());
+        Scanner scanner = new Scanner(System.in);
+        int choice = -1;
+        while (choice != 0) {
+            logger.info("\n" +
+                    "╔════════════════════════════════╗\n" +
+                    "║       Welcome to our Farm!     ║\n" +
+                    "╠════════════════════════════════╣\n" +
+                    "║ 1. Access employee portal      ║\n" +
+                    "║ 2. Access customer portal      ║\n" +
+                    "║ 0. Back to main menu           ║\n" +
+                    "╚════════════════════════════════╝\n" +
+                    "\n" +
+                    "Enter your choice: ");
+            choice = scanner.nextInt();
+            scanner.nextLine();
+            try {
+                switch (choice) {
+                    case 1:
+                        employeeManager.displayEmployeePortal();
+                        break;
+                    case 2:
+                        cropProductionManager.displayCustomerPortal();
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        throw new InvalidChoiceException("Invalid choice. Please try again.");
+                }
+            } catch (InvalidChoiceException e) {
+                logger.info(e.getMessage());
+            }
         }
     }
 }

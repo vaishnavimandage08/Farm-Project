@@ -1,9 +1,11 @@
 package com.solvd.farm.employee;
 
+import java.time.LocalDateTime;
+
 public interface ILogin {
 
-    void checkIn();
+    void checkIn(LocalDateTime timeIn);
 
-    void checkOut();
+    void checkOut(LocalDateTime timeOut);
 
 }
