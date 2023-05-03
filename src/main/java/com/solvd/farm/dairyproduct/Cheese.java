@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 public class Cheese extends DairyProduct {
     private long expiryDate;
 
-    public Cheese(int price, double fatContent, String name, long expiryDate) {
+    public Cheese(String name,int price, double fatContent, long expiryDate) {
         super(price, fatContent, name);
         this.expiryDate = expiryDate;
     }

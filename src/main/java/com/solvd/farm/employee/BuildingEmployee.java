@@ -2,7 +2,6 @@ package com.solvd.farm.employee;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.time.LocalDateTime;
 
 public class BuildingEmployee extends Employee {

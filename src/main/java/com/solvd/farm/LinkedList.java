@@ -1,4 +1,5 @@
 package com.solvd.farm;
+import com.solvd.farm.crop.Crop;
 import com.solvd.farm.exception.NullValueException;
 public class LinkedList<T> {
     private Node head;
@@ -78,6 +79,7 @@ public class LinkedList<T> {
     }
     public void clear() {
         head = null;
+        size = 0;
     }
     public int size() {
         return size;

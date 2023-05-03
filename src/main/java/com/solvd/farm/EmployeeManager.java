@@ -6,7 +6,6 @@ import com.solvd.farm.employee.FieldEmployee;
 import com.solvd.farm.exception.UserNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -15,6 +14,7 @@ import java.util.Scanner;
 public class EmployeeManager {
     private static final Logger logger = LogManager.getLogger(EmployeeManager.class);
     private final ArrayList<Employee> employeeList = new ArrayList<>();
+
     public EmployeeManager() {
         loadData();
     }
@@ -29,6 +29,7 @@ public class EmployeeManager {
                     "╠════════════════════════════════╣\n" +
                     "║ 1. Check in                    ║\n" +
                     "║ 2. Check out                   ║\n" +
+                    "║ 3. Display Employee List       ║\n" +
                     "║ 0. Back to Main Menu           ║\n" +
                     "╚════════════════════════════════╝\n" +
                     "Enter your choice: ");
@@ -73,6 +74,18 @@ public class EmployeeManager {
                     }
                     break;
                 }
+                case 3:
+                    String list = "";
+                    for (Employee employee : employeeList) {
+                        if (list.equals("")) {
+                            list = list + "\n" + "id   " + "name" + "\n" + "------------------";
+                        }
+                        list = list + "\n" + employee.getEmployeeID() + "  " + employee.getName();
+                    }
+                    if (!list.equals("")) {
+                        logger.info(list);
+                    }
+                    break;
                 case 0:
                     break;
                 default:
@@ -80,6 +93,7 @@ public class EmployeeManager {
             }
         }
     }
+
     private void loadData() {
         FieldEmployee fieldEmployee = new FieldEmployee(
                 "John",

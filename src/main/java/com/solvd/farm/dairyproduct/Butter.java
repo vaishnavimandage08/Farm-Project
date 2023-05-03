@@ -4,8 +4,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 public class Butter extends DairyProduct {
     private long expiryDate;
-    public Butter(int price, double fatContent, String name, long expiryDate) {
-        super(price, fatContent, name);
+    public Butter(String type ,int price, double fatContent,  long expiryDate) {
+        super(price, fatContent, type);
         this.expiryDate = expiryDate;
     }
     private static Logger logger = LogManager.getLogger(Butter.class);
