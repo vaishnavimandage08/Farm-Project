@@ -24,7 +24,7 @@ public class Main {
                     "╠════════════════════════════════╣\n" +
                     "║ 1. Access Employee Portal      ║\n" +
                     "║ 2. Access Customer Portal      ║\n" +
-                    "║ 0. Back to main menu           ║\n" +
+                    "║ 0. Exit                        ║\n" +
                     "╚════════════════════════════════╝\n" +
                     "\n" +
                     "Enter your choice: ");
