@@ -133,7 +133,8 @@ public class ProductManager {
                     String productName = scanner.nextLine();
 
                     for (Crop crop : cropList) {
-                        if (crop.getName().equalsIgnoreCase(productName)) {
+//                        if (crop.getName().equalsIgnoreCase(productName)) {
+                        if (crop.isEqual.test(productName)) {
                             cropCart.insertAtEnD(crop);
                             logger.info(productName + " added to the cart.");
                             break;
@@ -141,7 +142,7 @@ public class ProductManager {
                     }
 
                     for (DairyProduct dairyProduct : dairyProductList) {
-                        if (dairyProduct.getName().equalsIgnoreCase(productName)) {
+                        if (dairyProduct.isEqual.test(productName)) {
                             dairyCart.insertAtEnD(dairyProduct);
                             logger.info(productName + " added to the cart.");
                             break;

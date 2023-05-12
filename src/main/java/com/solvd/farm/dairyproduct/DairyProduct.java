@@ -1,4 +1,9 @@
 package com.solvd.farm.dairyproduct;
+
+import com.solvd.farm.IEqualIgnore;
+
+
+
 public abstract class DairyProduct {
     private int price;
     private double fatContent;
@@ -27,5 +32,10 @@ public abstract class DairyProduct {
     public String getName() {
         return name;
     }
+
+    public IEqualIgnore isEqual = name -> this.name.equalsIgnoreCase(name);
+
     public abstract void detailsOfProduct();
+
 }
+

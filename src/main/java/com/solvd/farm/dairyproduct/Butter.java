@@ -22,4 +22,6 @@ public class Butter extends DairyProduct {
     public void detailsOfProduct() {
         logger.info("The product name: " + getName() + "\nPrice: " + getPrice() + "\nFat content: " + getFatContent());
     }
+
+
 }

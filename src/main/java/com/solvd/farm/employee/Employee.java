@@ -1,6 +1,7 @@
 package com.solvd.farm.employee;
 
 import java.time.LocalDateTime;
+import java.util.function.Consumer;
 
 public abstract class Employee implements ILogin, IExtraWorkingHours {
     private String name;
@@ -45,9 +46,14 @@ public abstract class Employee implements ILogin, IExtraWorkingHours {
 
     public abstract void employeeDetails();
 
-    public void setTimeIn(LocalDateTime timeIn) {
+//    public void setTimeIn(LocalDateTime timeIn) {
+//        this.timeIn = timeIn;
+//    }
+
+    // Consumer Interface
+    public Consumer<LocalDateTime> consumer = (timeIn) -> {
         this.timeIn = timeIn;
-    }
+    };
 
     public LocalDateTime getTimeIn() {
         return timeIn;

@@ -1,5 +1,8 @@
 package com.solvd.farm.crop;
 
+import java.util.Objects;
+import java.util.function.Predicate;
+
 public abstract class Crop implements ISales {
     private int price;
     private String name;
@@ -37,5 +40,7 @@ public abstract class Crop implements ISales {
     public void setRealizedRevenue(double realizedRevenue) {
         this.realizedRevenue = realizedRevenue;
     }
+
+    public Predicate<String> isEqual = name -> this.name.equalsIgnoreCase(name);
 }
 

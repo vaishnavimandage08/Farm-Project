@@ -11,7 +11,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class EmployeeManager {
+public class EmployeeManager  {
     private static final Logger logger = LogManager.getLogger(EmployeeManager.class);
     private final ArrayList<Employee> employeeList = new ArrayList<>();
 
@@ -42,7 +42,8 @@ public class EmployeeManager {
                     boolean employeeFound = false;
                     for (Employee employee : employeeList) {
                         if (employee.getEmployeeID() == inputId) {
-                            employee.setTimeIn(LocalDateTime.now());
+                            employee.checkIn(LocalDateTime.now());
+//                            employee.consumer.accept(LocalDateTime.now());
                             employeeFound = true;
                             logger.info("Check In Done!");
                             break;
@@ -80,7 +81,7 @@ public class EmployeeManager {
                         if (list.equals("")) {
                             list = list + "\n" + "id   " + "name" + "\n" + "------------------";
                         }
-                        list = list + "\n" + employee.getEmployeeID() + "  " + employee.getName();
+                        displayOnly.display(employee);
                     }
                     if (!list.equals("")) {
                         logger.info(list);
@@ -113,4 +114,9 @@ public class EmployeeManager {
         BuildingEmployee buildingEmployee = new BuildingEmployee("jack", 123, "jack123@gmail.com", 234532125);
         employeeList.add(buildingEmployee);
     }
+    IDisplayOnly displayOnly = employee -> {
+        System.out.println(employee.getEmployeeID() + "  " + employee.getName());
+    };
 }
+
+

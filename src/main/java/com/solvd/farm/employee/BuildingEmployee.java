@@ -28,7 +28,8 @@ public class BuildingEmployee extends Employee {
 
     @Override
     public void checkIn(LocalDateTime timeIn) {
-        this.setTimeIn(timeIn);
+//        this.setTimeIn(timeIn);
+        consumer.accept(timeIn);
     }
 
     @Override
