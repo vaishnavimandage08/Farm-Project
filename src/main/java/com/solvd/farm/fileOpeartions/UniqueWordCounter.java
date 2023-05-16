@@ -1,5 +1,6 @@
 package com.solvd.farm.fileOpeartions;
 
+import com.solvd.farm.exception.NullValueException;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -8,9 +9,12 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
 import java.util.Set;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class UniqueWordCounter {
-    public static void main(String[] args) throws IOException {
+    private static final Logger logger = LogManager.getLogger(UniqueWordCounter.class);
+    public static void main(String[] args) throws NullValueException {
         // Read the input text file from the resources folder
         try {
             File inputFile = new File("src/main/resources/input.txt");
@@ -31,11 +35,11 @@ public class UniqueWordCounter {
             String outputText = "Number of unique words: " + numUniqueWords;
             FileUtils.writeStringToFile(outputFile, outputText, StandardCharsets.UTF_8);
 
-            System.out.println("Finished counting unique words. Result written to output.txt");
+            logger.info("Finished counting unique words. Result written to output.txt");
 
         }
         catch(IOException e){
-            e.getMessage();
+            e.printStackTrace();
         }
     }
 }

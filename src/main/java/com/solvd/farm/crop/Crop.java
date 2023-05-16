@@ -19,6 +19,8 @@ public abstract class Crop implements ISales {
         this.realizedRevenue = realizedRevenue;
     }
 
+    public Crop() {}
+
     public int getPrice() {
         return price;
     }

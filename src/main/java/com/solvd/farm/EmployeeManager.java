@@ -1,8 +1,6 @@
 package com.solvd.farm;
 
-import com.solvd.farm.employee.BuildingEmployee;
 import com.solvd.farm.employee.Employee;
-import com.solvd.farm.employee.FieldEmployee;
 import com.solvd.farm.exception.UserNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,13 +8,14 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class EmployeeManager  {
     private static final Logger logger = LogManager.getLogger(EmployeeManager.class);
-    private final ArrayList<Employee> employeeList = new ArrayList<>();
+    private  ArrayList<Employee> employeeList = new ArrayList<>();
 
-    public EmployeeManager() {
-        loadData();
+    public EmployeeManager(ArrayList<Employee> employee) {
+        employeeList = employee;
     }
 
     public void displayEmployeePortal() throws UserNotFoundException {
@@ -39,29 +38,28 @@ public class EmployeeManager  {
                 case 1:
                     logger.info("Enter your employee ID: ");
                     int inputId = scanner.nextInt();
-                    boolean employeeFound = false;
-                    for (Employee employee : employeeList) {
-                        if (employee.getEmployeeID() == inputId) {
-                            employee.checkIn(LocalDateTime.now());
-//                            employee.consumer.accept(LocalDateTime.now());
-                            employeeFound = true;
-                            logger.info("Check In Done!");
-                            break;
-                        }
-                    }
-                    try {
-                        if (!employeeFound) {
-                            throw new UserNotFoundException("Error: Employee ID not found.");
-                        }
-                    } catch (UserNotFoundException e) {
+
+                    boolean employeeFound = employeeList.stream()
+                            .anyMatch(employee -> employee.employeeFinder.test(inputId));
+
+                    if (employeeFound) {
+                        Employee foundEmployee = employeeList.stream()
+                                .filter(employee -> employee.employeeFinder.test(inputId))
+                                .findFirst()
+                                .orElseThrow(() -> new UserNotFoundException("Error: Employee ID not found."));
+
+                        foundEmployee.checkIn(LocalDateTime.now());
+                        logger.info("Check In Done!");
+                    } else {
                         logger.info("Error: Employee ID not found.");
                         logger.debug("Please try again or enter '0' to return to the main menu.");
                     }
+
                     break;
                 case 2: {
                     System.out.println("Enter your employee ID: ");
                     int inputId1 = scanner.nextInt();
-                    for (Employee employee : employeeList) {
+                    employeeList.stream().forEach(employee -> {
                         if (employee.getEmployeeID() == inputId1) {
                             employee.setTimeOut(LocalDateTime.now());
                             logger.info("You have successfully checked out!");
@@ -72,18 +70,17 @@ public class EmployeeManager  {
                             long sumMinute = dif % 60;
                             logger.info("Total hours worked: " + sumHour + ":" + sumMinute);
                         }
-                    }
-                    break;
+                    });
                 }
+                    break;
                 case 3:
-                    String list = "";
-                    for (Employee employee : employeeList) {
-                        if (list.equals("")) {
-                            list = list + "\n" + "id   " + "name" + "\n" + "------------------";
-                        }
-                        displayOnly.display(employee);
-                    }
+//                    String list = "";
+                    String list = employeeList.stream()
+                            .map(employee ->"id "+ employee.getEmployeeID() + " name: "+ employee.getName())
+                            .collect(Collectors.joining("\n"));
+
                     if (!list.equals("")) {
+                        list = "\n" + "id   " + "name" + "\n" + "" + list;
                         logger.info(list);
                     }
                     break;
@@ -93,26 +90,6 @@ public class EmployeeManager  {
                     logger.info("Invalid choice. Please try again.");
             }
         }
-    }
-
-    private void loadData() {
-        FieldEmployee fieldEmployee = new FieldEmployee(
-                "John",
-                125,
-                "john123@gmail.com",
-                234532125
-        );
-        employeeList.add(fieldEmployee);
-
-        fieldEmployee = new FieldEmployee(
-                "Taylor",
-                121,
-                "taylor764@gmail.com",
-                358902344);
-        employeeList.add(fieldEmployee);
-
-        BuildingEmployee buildingEmployee = new BuildingEmployee("jack", 123, "jack123@gmail.com", 234532125);
-        employeeList.add(buildingEmployee);
     }
     IDisplayOnly displayOnly = employee -> {
         System.out.println(employee.getEmployeeID() + "  " + employee.getName());

@@ -1,5 +1,8 @@
 package com.solvd.farm.employee;
 
+import com.solvd.farm.IEmployeeFinder;
+import com.solvd.farm.IEqualIgnore;
+
 import java.time.LocalDateTime;
 import java.util.function.Consumer;
 
@@ -55,6 +58,8 @@ public abstract class Employee implements ILogin, IExtraWorkingHours {
         this.timeIn = timeIn;
     };
 
+
+
     public LocalDateTime getTimeIn() {
         return timeIn;
     }
@@ -66,5 +71,7 @@ public abstract class Employee implements ILogin, IExtraWorkingHours {
     public LocalDateTime getTimeOut() {
         return timeOut;
     }
+    
+    public IEmployeeFinder employeeFinder = empID -> this.employeeID==(empID);
 
 }

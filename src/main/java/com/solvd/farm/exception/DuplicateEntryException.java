@@ -1,6 +1,8 @@
 package com.solvd.farm.exception;
 
-public class DuplicateEntryException extends Exception {
+import java.io.IOException;
+
+public class DuplicateEntryException extends IOException {
     public DuplicateEntryException(String message) {
         super(message);
     }

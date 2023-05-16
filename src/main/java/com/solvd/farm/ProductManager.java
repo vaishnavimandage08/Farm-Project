@@ -1,10 +1,6 @@
 package com.solvd.farm;
 
 import com.solvd.farm.crop.Crop;
-import com.solvd.farm.crop.Grain;
-import com.solvd.farm.crop.Vegetable;
-import com.solvd.farm.dairyproduct.Butter;
-import com.solvd.farm.dairyproduct.Cheese;
 import com.solvd.farm.dairyproduct.DairyProduct;
 import com.solvd.farm.dairyproduct.Milk;
 import com.solvd.farm.exception.ItemNotFoundException;
@@ -12,20 +8,23 @@ import com.solvd.farm.exception.NullValueException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class ProductManager {
     private static final Logger logger = LogManager.getLogger(ProductManager.class);
-    private final ArrayList<Crop> cropList = new ArrayList<>();
-    private final ArrayList<DairyProduct> dairyProductList = new ArrayList<>();
+    private ArrayList<Crop> cropList = new ArrayList<>();
+    private ArrayList<DairyProduct> dairyProductList = new ArrayList<>();
 
     LinkedList<Crop> cropCart = new LinkedList<>();
     LinkedList<DairyProduct> dairyCart = new LinkedList<>();
 
-    public ProductManager() {
-        loadCropProducts();
-        loadDairyProducts();
+    public ProductManager(ArrayList<Crop> cropData, ArrayList<DairyProduct> dairyProducts) {
+//        loadCropProducts(cropData);
+        cropList = cropData;
+        dairyProductList = dairyProducts;
     }
 
     public void displayProductPortal() throws ItemNotFoundException {
@@ -106,48 +105,51 @@ public class ProductManager {
                 case 1:
                     logger.info("\nAvailable Products : "
                             + "\n--------------------");
-                    String listToDisplay = "";
-                    for (Crop crop : cropList) {
-                        listToDisplay = listToDisplay
-                                + "\nName :" + " " + crop.getName()
-                                + "\nPrice :" + " " + "$" + crop.getPrice()
-                                + "\n--------------------";
-                    }
+//                    String listToDisplay = "";
+
+                    String listToDisplay = cropList.stream()
+                            .map(crop -> "Name : " + crop.getName()
+                                    + "\nPrice : $" + crop.getPrice()
+                                    + "\n--------------------")
+                            .collect(Collectors.joining("\n"));
+
                     logger.info(listToDisplay);
+
                     break;
                 case 2:
                     logger.info("\nAvailable Products : "
                             + "\n--------------------");
-                    listToDisplay = "";
-                    for (DairyProduct dairyProduct : dairyProductList) {
-                        listToDisplay = listToDisplay
-                                + "\nName :" + " " + dairyProduct.getName()
-                                + "\nPrice :" + " " + "$" + dairyProduct.getPrice()
-                                + "\nFat content :" + " " + dairyProduct.getFatContent()
-                                + "\n--------------------";
-                    }
+//                    listToDisplay = "";
+                    listToDisplay = dairyProductList.stream()
+                            .map(dairyProduct -> "Name : " + dairyProduct.getName()
+                                    + "\nPrice : $" + dairyProduct.getPrice()
+                                    + "\nFat content : " + dairyProduct.getFatContent()
+                                    + "\n--------------------")
+                            .collect(Collectors.joining("\n"));
+
                     logger.info(listToDisplay);
                     break;
                 case 3:
                     logger.info("Enter the product to add: ");
                     String productName = scanner.nextLine();
 
-                    for (Crop crop : cropList) {
-//                        if (crop.getName().equalsIgnoreCase(productName)) {
-                        if (crop.isEqual.test(productName)) {
-                            cropCart.insertAtEnD(crop);
-                            logger.info(productName + " added to the cart.");
-                            break;
-                        }
-                    }
-
-                    for (DairyProduct dairyProduct : dairyProductList) {
-                        if (dairyProduct.isEqual.test(productName)) {
-                            dairyCart.insertAtEnD(dairyProduct);
-                            logger.info(productName + " added to the cart.");
-                            break;
-                        }
-                    }
+                    boolean isProductFound = cropList.stream()
+                            .filter(crop -> crop.isEqual.test(productName))
+                            .findFirst()
+                            .map(crop -> {
+                                cropCart.insertAtEnD(crop);
+                                logger.info(productName + " added to the cart.");
+                                return true;
+                            })
+                            .orElseGet(() -> dairyProductList.stream()
+                                    .filter(dairyProduct -> dairyProduct.isEqual.test(productName))
+                                    .findFirst()
+                                    .map(dairyProduct -> {
+                                        dairyCart.insertAtEnD(dairyProduct);
+                                        logger.info(productName + " added to the cart.");
+                                        return true;
+                                    })
+                                    .orElse(false));
 
                     try {
                         if (cropCart.isEmpty() && dairyCart.isEmpty()) {
@@ -194,46 +196,8 @@ public class ProductManager {
         }
     }
 
-    private void loadCropProducts() {
-
-        cropList.add(new Grain(
-                "Wheat",
-                10,
-                689,
-                "Protein"));
-        cropList.add(new Grain(
-                "Rice",
-                15,
-                700,
-                "Protein"));
-        Vegetable vegetable = new Vegetable(
-                "Spinach",
-                5,
-                900.87,
-                10);
-        cropList.add(vegetable);
+    private void loadCropProducts(ArrayList<Crop> data) {
+        cropList = data;
     }
 
-    private void loadDairyProducts() {
-        Butter butter = new Butter(
-                "Salted Butter",
-                5,
-                12,
-                10 / 02 / 2023);
-        dairyProductList.add(butter);
-
-        Milk milk = new Milk(
-                "Cow Milk",
-                true,
-                8,
-                10);
-        dairyProductList.add(milk);
-
-        Cheese cheese = new Cheese(
-                "Cheddar Cheese",
-                12,
-                15,
-                05 / 20 / 2023);
-        dairyProductList.add(cheese);
-    }
 }

@@ -1,19 +1,28 @@
 package com.solvd.farm;
 
+import com.solvd.farm.crop.Crop;
 import com.solvd.farm.exception.InvalidChoiceException;
 import com.solvd.farm.exception.ItemNotFoundException;
 import com.solvd.farm.exception.UserNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
 
 public class Main {
     private static final Logger logger = LogManager.getLogger(Main.class);
 
-    public static void main(String[] args) throws UserNotFoundException, ItemNotFoundException {
-        EmployeeManager employeeManager = new EmployeeManager();
-        ProductManager productManager = new ProductManager();
+    public static void main(String[] args) throws UserNotFoundException, ItemNotFoundException, InvocationTargetException, IllegalAccessException, InstantiationException, NoSuchMethodException {
+        EmployeeManager employeeManager = new EmployeeManager(ApplicationDataGenerator.generateEmployee());
+        ProductManager productManager = null;
+
+        try {
+            productManager = new ProductManager(ApplicationDataGenerator.generateCrop(), ApplicationDataGenerator.generateDairy());
+        } catch (Exception exception) {
+            logger.error("Failed to load application data. " + exception);
+        }
+
 
         Scanner scanner = new Scanner(System.in);
         int choice = -1;

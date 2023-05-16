@@ -1,6 +1,8 @@
 package com.solvd.farm.exception;
 
-public class NullValueException extends Exception {
+import java.io.IOException;
+
+public class NullValueException extends IOException {
     public NullValueException(String message) {
         super(message);
     }
