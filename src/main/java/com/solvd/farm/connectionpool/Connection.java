@@ -1,4 +1,4 @@
-package com.solvd.farm;
+package com.solvd.farm.connectionpool;
 
 public class Connection {
         private int connectionId;

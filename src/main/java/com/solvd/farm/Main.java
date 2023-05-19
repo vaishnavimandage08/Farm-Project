@@ -1,7 +1,6 @@
 package com.solvd.farm;
 
-import com.solvd.farm.building.Building;
-import com.solvd.farm.crop.Crop;
+import com.solvd.farm.enums.FarmHours;
 import com.solvd.farm.exception.InvalidChoiceException;
 import com.solvd.farm.exception.ItemNotFoundException;
 import com.solvd.farm.exception.UserNotFoundException;
@@ -35,6 +34,7 @@ public class Main {
                     "╠════════════════════════════════╣\n" +
                     "║ 1. Access Employee Portal      ║\n" +
                     "║ 2. Access Customer Portal      ║\n" +
+                    "║ 3. Farm Status                 ║\n" +
                     "║ 0. Exit                        ║\n" +
                     "╚════════════════════════════════╝\n" +
                     "\n" +
@@ -48,6 +48,15 @@ public class Main {
                         break;
                     case 2:
                         productManager.displayProductPortal();
+                        break;
+                    case 3:
+                        for (FarmHours hours : FarmHours.values()){
+                            String day = hours.name();
+                            String openingTime = hours.getOpeningTime();
+                            String closingTime = hours.getClosingTime();
+
+                            logger.info("║ " + day + ": " + openingTime + " - " + closingTime);
+                        }
                         break;
                     case 0:
                         break;
