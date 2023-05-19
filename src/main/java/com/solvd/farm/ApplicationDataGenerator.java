@@ -1,5 +1,8 @@
 package com.solvd.farm;
 
+import com.solvd.farm.building.Barn;
+import com.solvd.farm.building.Building;
+import com.solvd.farm.building.Storage;
 import com.solvd.farm.crop.Crop;
 import com.solvd.farm.crop.Grain;
 import com.solvd.farm.dairyproduct.Butter;
@@ -96,6 +99,26 @@ public class ApplicationDataGenerator {
                         "jack123@gmail.com",
                         234532125);
         data.add(buildingEmployee);
-        return  data;
+        return data;
+    }
+
+    public static ArrayList<Building> generateBuilding() throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
+        ArrayList<Building> data = new ArrayList<>();
+        Storage storage = new Storage(
+                "Grain bin",
+                "Jonathan",
+                100,
+                "cold");
+        data.add(storage);
+
+        Barn barn = new Barn(
+                "Dairy barn",
+                "Andrew",
+                50,
+                true);
+        storage.setLocked(true);
+        barn.setLocked(false);
+        data.add(barn);
+        return data;
     }
 }

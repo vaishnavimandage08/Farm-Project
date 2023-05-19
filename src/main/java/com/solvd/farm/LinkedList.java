@@ -1,7 +1,12 @@
 package com.solvd.farm;
 import com.solvd.farm.crop.Crop;
 import com.solvd.farm.exception.NullValueException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class LinkedList<T> {
+    private static final Logger logger = LogManager.getLogger(LinkedList.class);
+
     private Node head;
     private int size;
 
@@ -38,7 +43,7 @@ public class LinkedList<T> {
     }
     public void delete(T data) {
         if (head == null) {
-            System.out.println("can't delete a Linked list is empty");
+            logger.info("can't delete a Linked list is empty");
             return;
         } else {
             if (head.data == data) {
@@ -52,30 +57,30 @@ public class LinkedList<T> {
                     return;
                 }
             }
-            System.out.println("Node is not present");
+            logger.info("Node is not present");
         }
     }
     public void printLinkedList() {
         if (head == null) {
-            System.out.println("can't delete a Linked list is empty");
+            logger.info("can't delete a Linked list is empty");
         } else {
             Node<T> currentNode = head;
             while (currentNode.next != null) {
-                System.out.println(currentNode.data + "->");
+                logger.info(currentNode.data + "->");
             }
-            System.out.println("null");
+            logger.info("null");
         }
     }
     public void search(T data) {
         Node<T> node = head;
         while (node.next != null) {
             if (node.data == data) {
-                System.out.println("searched item" + node.data);
+                logger.info("searched item" + node.data);
                 return;
             }
             node = node.next;
         }
-        System.out.println("Item not found");
+        logger.info("Item not found");
     }
     public void clear() {
         head = null;

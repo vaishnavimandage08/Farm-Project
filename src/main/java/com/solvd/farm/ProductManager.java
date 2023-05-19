@@ -2,7 +2,6 @@ package com.solvd.farm;
 
 import com.solvd.farm.crop.Crop;
 import com.solvd.farm.dairyproduct.DairyProduct;
-import com.solvd.farm.dairyproduct.Milk;
 import com.solvd.farm.exception.ItemNotFoundException;
 import com.solvd.farm.exception.NullValueException;
 import org.apache.logging.log4j.LogManager;
@@ -15,8 +14,8 @@ import java.util.stream.Collectors;
 
 public class ProductManager {
     private static final Logger logger = LogManager.getLogger(ProductManager.class);
-    private ArrayList<Crop> cropList = new ArrayList<>();
-    private ArrayList<DairyProduct> dairyProductList = new ArrayList<>();
+    private ArrayList<Crop> cropList;
+    private ArrayList<DairyProduct> dairyProductList;
 
     LinkedList<Crop> cropCart = new LinkedList<>();
     LinkedList<DairyProduct> dairyCart = new LinkedList<>();

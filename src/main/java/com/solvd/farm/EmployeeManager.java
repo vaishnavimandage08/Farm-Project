@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class EmployeeManager  {
     private static final Logger logger = LogManager.getLogger(EmployeeManager.class);
-    private  ArrayList<Employee> employeeList = new ArrayList<>();
+    private  ArrayList<Employee> employeeList;
 
     public EmployeeManager(ArrayList<Employee> employee) {
         employeeList = employee;
@@ -57,7 +57,7 @@ public class EmployeeManager  {
 
                     break;
                 case 2: {
-                    System.out.println("Enter your employee ID: ");
+                    logger.info("Enter your employee ID: ");
                     int inputId1 = scanner.nextInt();
                     employeeList.stream().forEach(employee -> {
                         if (employee.getEmployeeID() == inputId1) {
@@ -92,7 +92,7 @@ public class EmployeeManager  {
         }
     }
     IDisplayOnly displayOnly = employee -> {
-        System.out.println(employee.getEmployeeID() + "  " + employee.getName());
+        logger.info(employee.getEmployeeID() + "  " + employee.getName());
     };
 }
 

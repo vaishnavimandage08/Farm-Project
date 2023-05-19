@@ -1,5 +1,6 @@
 package com.solvd.farm;
 
+import com.solvd.farm.building.Building;
 import com.solvd.farm.crop.Crop;
 import com.solvd.farm.exception.InvalidChoiceException;
 import com.solvd.farm.exception.ItemNotFoundException;
@@ -15,6 +16,7 @@ public class Main {
 
     public static void main(String[] args) throws UserNotFoundException, ItemNotFoundException, InvocationTargetException, IllegalAccessException, InstantiationException, NoSuchMethodException {
         EmployeeManager employeeManager = new EmployeeManager(ApplicationDataGenerator.generateEmployee());
+        BuildingManager buildingManager = new BuildingManager(ApplicationDataGenerator.generateBuilding());
         ProductManager productManager = null;
 
         try {

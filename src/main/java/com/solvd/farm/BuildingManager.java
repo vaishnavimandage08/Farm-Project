@@ -1,6 +1,5 @@
 package com.solvd.farm;
 
-import com.solvd.farm.building.Barn;
 import com.solvd.farm.building.Building;
 import com.solvd.farm.building.Storage;
 import org.apache.logging.log4j.LogManager;
@@ -9,12 +8,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BuildingManager {
-    private ArrayList<Building> buildingList = new ArrayList<>();
     private static final Logger logger = LogManager.getLogger(BuildingManager.class);
+    private  ArrayList<Building> buildingList;
 
-    public BuildingManager() {
-        loadData();
+    public BuildingManager(ArrayList<Building> buildingList) {
+
     }
+
 
     public void displayBuildingPortal() {
         Scanner scanner = new Scanner(System.in);
@@ -50,21 +50,4 @@ public class BuildingManager {
         Storage.currentTemp = i;
     }
 
-    private void loadData() {
-        Storage storage = new Storage(
-                "Grain bin",
-                "Jonathan",
-                100,
-                "cold");
-        buildingList.add(storage);
-
-        Barn barn = new Barn(
-                "Dairy barn",
-                "Andrew",
-                50,
-                true);
-        storage.setLocked(true);
-        barn.setLocked(false);
-        buildingList.add(barn);
-    }
 }
