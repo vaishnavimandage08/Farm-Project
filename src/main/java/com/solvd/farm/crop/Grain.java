@@ -27,13 +27,5 @@ public class Grain extends Crop {
         logger.info("The crop name: " + getName() + "\n price: " + getPrice() + "\nuses: " + nutritionalValue);
     }
 
-    @Override
-    public void reportRevenue() {
-        if (getRealizedRevenue() > expectedRevenue) {
-            logger.info("Congratulations! You have made a profit of $" + (getRealizedRevenue() - expectedRevenue));
-        } else if (getRealizedRevenue() < expectedRevenue) {
-            logger.info("Sorry! You have incurred a loss of $" + (expectedRevenue - getRealizedRevenue()));
-        }
-    }
 
 }

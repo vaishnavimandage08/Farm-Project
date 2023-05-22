@@ -1,6 +1,6 @@
 package com.solvd.farm.building;
 
-public abstract class Building implements ISecurity {
+public abstract class Building  {
     private String buildingName;
     private String headOfDepartment;
     private int Capacity;

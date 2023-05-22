@@ -26,12 +26,5 @@ public class Barn extends Building {
         logger.info("The Building name: " + getBuildingName() + "\nHead Of Department: " + getHeadOfDepartment() + "\nBuilding capacity: " + getCapacity());
     }
 
-    @Override
-    public void lock() {
-        if (locked) {
-            logger.info("locked");
-        } else {
-            logger.info("unlocked");
-        }
-    }
+
 }

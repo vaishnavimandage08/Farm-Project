@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.HashMap;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,16 +26,16 @@ public class UniqueWordCounter {
             //Stores unique words from file
             HashMap<String, Integer> wordCounts = new HashMap<>();
 
-            for (String word : words) {
-                if (wordCounts.containsKey(word)) {
+           Arrays.stream(words).forEach((word->
+            {if (wordCounts.containsKey(word)) {
                     // If the word already exists in the map, increment its count
                     wordCounts.put(word, wordCounts.get(word) + 1);
                 } else {
                     // If the word doesn't exist in the map, add it with a count of 1
                     wordCounts.put(word, 1);
                 }
-            }
 
+            }));
                 // Write the result to a new text file in the resources folder
                 File outputFile = new File("src/main/resources/output.txt");
                 StringBuilder outputText = new StringBuilder();

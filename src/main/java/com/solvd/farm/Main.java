@@ -1,5 +1,6 @@
 package com.solvd.farm;
 
+import com.solvd.farm.crop.Grain;
 import com.solvd.farm.enums.FarmHours;
 import com.solvd.farm.exception.InvalidChoiceException;
 import com.solvd.farm.exception.ItemNotFoundException;
@@ -8,7 +9,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class Main {
     private static final Logger logger = LogManager.getLogger(Main.class);
@@ -23,7 +26,6 @@ public class Main {
         } catch (Exception exception) {
             logger.error("Failed to load application data. " + exception);
         }
-
 
         Scanner scanner = new Scanner(System.in);
         int choice = -1;
@@ -50,13 +52,11 @@ public class Main {
                         productManager.displayProductPortal();
                         break;
                     case 3:
-                        for (FarmHours hours : FarmHours.values()){
-                            String day = hours.name();
-                            String openingTime = hours.getOpeningTime();
-                            String closingTime = hours.getClosingTime();
-
-                            logger.info("║ " + day + ": " + openingTime + " - " + closingTime);
-                        }
+                        Stream.of(FarmHours.values())
+                                .map(hours -> "day: " + hours.name()
+                                        + "\nopeningTime: " + hours.getOpeningTime()
+                                        + "\nclosingTime: " + hours.getClosingTime())
+                                .forEach(hoursInfo -> logger.info("║ " + hoursInfo));
                         break;
                     case 0:
                         break;

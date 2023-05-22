@@ -21,7 +21,7 @@ public enum FarmHours {
         return closingTime;
     }
 
-    FarmHours(String openingTime, String closingTime) {
+     FarmHours(String openingTime, String closingTime) {
         this.openingTime = openingTime;
         this.closingTime = closingTime;
     }

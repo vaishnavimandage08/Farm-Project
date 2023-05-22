@@ -39,13 +39,5 @@ public class Storage extends Building implements ITemperatureControl {
         }
     }
 
-    @Override
-    public void lock() {
-        if (locked) {
-            logger.info("locked");
-        } else {
-            logger.info("unlocked");
-        }
-    }
 }
 

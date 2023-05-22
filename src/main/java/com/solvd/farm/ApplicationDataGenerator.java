@@ -34,13 +34,17 @@ public class ApplicationDataGenerator {
 
 
         // Generate data using reflection
+        // create an object of Grain Class
+
         Class<Grain> grainClass = Grain.class;
 
-        // Get the constructor of Crop with no arguments
+        // Get the constructor of Grain with arguments
         Constructor<Grain> constructor = grainClass.getConstructor(String.class, int.class, double.class, String.class);
+
+        // allow modification of the private field
         constructor.setAccessible(true);
 
-        // Create a new instance of Crop using the constructor
+        // Create a new instance of Grain using the constructor and then added to a data collection or list.
         data.add(constructor.newInstance(
                 "Corn",
                 5,
@@ -121,4 +125,5 @@ public class ApplicationDataGenerator {
         data.add(barn);
         return data;
     }
+
 }

@@ -194,7 +194,6 @@ public class ProductManager {
             }
         }
     }
-
     private void loadCropProducts(ArrayList<Crop> data) {
         cropList = data;
     }

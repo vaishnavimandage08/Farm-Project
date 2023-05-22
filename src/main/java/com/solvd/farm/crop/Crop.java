@@ -3,7 +3,7 @@ package com.solvd.farm.crop;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-public abstract class Crop implements ISales {
+public abstract class Crop  {
     private int price;
     private String name;
     protected final double expectedRevenue = 2000;
