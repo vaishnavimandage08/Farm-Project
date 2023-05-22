@@ -1,5 +1,4 @@
 package com.solvd.farm;
-import com.solvd.farm.crop.Crop;
 import com.solvd.farm.exception.NullValueException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,7 +21,7 @@ public class LinkedList<T> {
         head = null;
         size = 0;
     }
-    public void insertAtEnD(T data) {
+    public void insertatend(T data) {
         Node node = new Node(data);
         if (head == null) {
             head = node;

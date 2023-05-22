@@ -10,20 +10,20 @@ public enum FarmHours {
     SATURDAY("09:00", "15:00"),
     SUNDAY("Closed", "Closed");
 
-    private final String openingTime;
-    private final String closingTime;
+    private final String open;
+    private final String close;
 
     public String getOpeningTime() {
-        return openingTime;
+        return open;
     }
 
     public String getClosingTime() {
-        return closingTime;
+        return close;
     }
 
-     FarmHours(String openingTime, String closingTime) {
-        this.openingTime = openingTime;
-        this.closingTime = closingTime;
+     FarmHours(String open, String close) {
+        this.open = open;
+        this.close = close;
     }
 
 }

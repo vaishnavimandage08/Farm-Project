@@ -7,7 +7,6 @@ import com.solvd.farm.exception.NullValueException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -136,7 +135,7 @@ public class ProductManager {
                             .filter(crop -> crop.isEqual.test(productName))
                             .findFirst()
                             .map(crop -> {
-                                cropCart.insertAtEnD(crop);
+                                cropCart.insertatend(crop);
                                 logger.info(productName + " added to the cart.");
                                 return true;
                             })
@@ -144,14 +143,14 @@ public class ProductManager {
                                     .filter(dairyProduct -> dairyProduct.isEqual.test(productName))
                                     .findFirst()
                                     .map(dairyProduct -> {
-                                        dairyCart.insertAtEnD(dairyProduct);
+                                        dairyCart.insertatend(dairyProduct);
                                         logger.info(productName + " added to the cart.");
                                         return true;
                                     })
                                     .orElse(false));
 
                     try {
-                        if (cropCart.isEmpty() && dairyCart.isEmpty()) {
+                        if (cropCart.isEmpty() && dairyCart.isEmpty() ) {
                             throw new ItemNotFoundException("Error: Product not found..");
                         }
                     } catch (ItemNotFoundException e) {
@@ -193,9 +192,6 @@ public class ProductManager {
                     logger.info("Invalid choice. Please try again.");
             }
         }
-    }
-    private void loadCropProducts(ArrayList<Crop> data) {
-        cropList = data;
     }
 
 }

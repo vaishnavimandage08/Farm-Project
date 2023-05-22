@@ -1,6 +1,5 @@
 package com.solvd.farm;
 
-import com.solvd.farm.crop.Grain;
 import com.solvd.farm.enums.FarmHours;
 import com.solvd.farm.exception.InvalidChoiceException;
 import com.solvd.farm.exception.ItemNotFoundException;
@@ -9,7 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
@@ -36,7 +35,7 @@ public class Main {
                     "╠════════════════════════════════╣\n" +
                     "║ 1. Access Employee Portal      ║\n" +
                     "║ 2. Access Customer Portal      ║\n" +
-                    "║ 3. Farm Status                 ║\n" +
+                    "║ 3. Farm Hours                  ║\n" +
                     "║ 0. Exit                        ║\n" +
                     "╚════════════════════════════════╝\n" +
                     "\n" +
@@ -63,7 +62,7 @@ public class Main {
                     default:
                         throw new InvalidChoiceException("Invalid choice. Please try again.");
                 }
-            } catch (InvalidChoiceException e) {
+            } catch (InvalidChoiceException | InputMismatchException e) {
                 logger.info(e.getMessage());
             }
         }

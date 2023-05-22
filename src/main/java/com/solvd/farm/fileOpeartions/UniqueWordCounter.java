@@ -14,7 +14,7 @@ import org.apache.logging.log4j.Logger;
 
 public class UniqueWordCounter {
     private static final Logger logger = LogManager.getLogger(UniqueWordCounter.class);
-    public static void main(String[] args) throws NullValueException {
+    public static void main(String[] args) {
         // Read the input text file from the resources folder
         try {
             File inputFile = new File("src/main/resources/input.txt");

@@ -18,7 +18,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 public class ApplicationDataGenerator {
-    public static ArrayList<Crop> generateCrop() throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
+    public static ArrayList<Crop> generateCrop() throws IllegalAccessException, InstantiationException, InvocationTargetException, NoSuchMethodException {
 
         ArrayList<Crop> data = new ArrayList<>();
         data.add(new Grain(
@@ -54,7 +54,7 @@ public class ApplicationDataGenerator {
         return data;
     }
 
-    public static ArrayList<DairyProduct> generateDairy() throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
+    public static ArrayList<DairyProduct> generateDairy()  {
         ArrayList<DairyProduct> data = new ArrayList<>();
         Butter butter = new Butter(
                 "Salted Butter",
@@ -80,7 +80,7 @@ public class ApplicationDataGenerator {
         return data;
     }
 
-    public static ArrayList<Employee> generateEmployee() throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
+    public static ArrayList<Employee> generateEmployee()  {
         ArrayList<Employee> data = new ArrayList<>();
         FieldEmployee fieldEmployee = new FieldEmployee(
                 "John",
@@ -106,7 +106,7 @@ public class ApplicationDataGenerator {
         return data;
     }
 
-    public static ArrayList<Building> generateBuilding() throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
+    public static ArrayList<Building> generateBuilding() {
         ArrayList<Building> data = new ArrayList<>();
         Storage storage = new Storage(
                 "Grain bin",
