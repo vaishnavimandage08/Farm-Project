@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 public class Main {
     private static final Logger logger = LogManager.getLogger(Main.class);
 
-    public static void main(String[] args) throws UserNotFoundException, ItemNotFoundException, InvocationTargetException, IllegalAccessException, InstantiationException, NoSuchMethodException {
+    public static void main(String[] args) throws UserNotFoundException, ItemNotFoundException {
         EmployeeManager employeeManager = new EmployeeManager(ApplicationDataGenerator.generateEmployee());
         BuildingManager buildingManager = new BuildingManager(ApplicationDataGenerator.generateBuilding());
         ProductManager productManager = null;

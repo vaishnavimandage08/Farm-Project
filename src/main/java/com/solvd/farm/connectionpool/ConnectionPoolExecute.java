@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 public class ConnectionPoolExecute {
     private static final Logger logger = LogManager.getLogger(ConnectionPoolExecute.class);
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args)  {
         ConnectionPool connectionPool = ConnectionPool.getInstance();
         // Add connections to the pool
         Connection connection1 = new Connection(1, "API 1");
