@@ -35,7 +35,8 @@ public class Main {
                     "╠════════════════════════════════╣\n" +
                     "║ 1. Access Employee Portal      ║\n" +
                     "║ 2. Access Customer Portal      ║\n" +
-                    "║ 3. Farm Hours                  ║\n" +
+                    "║ 3. Farm Buildings              ║\n" +
+                    "║ 4. Farm Hours                  ║\n" +
                     "║ 0. Exit                        ║\n" +
                     "╚════════════════════════════════╝\n" +
                     "\n" +
@@ -51,11 +52,14 @@ public class Main {
                         productManager.displayProductPortal();
                         break;
                     case 3:
+                        buildingManager.displayBuildingPortal();
+                        break;
+                    case 4:
                         Stream.of(FarmHours.values())
                                 .map(hours -> "day: " + hours.name()
-                                        + "\nopeningTime: " + hours.getOpeningTime()
-                                        + "\nclosingTime: " + hours.getClosingTime())
-                                .forEach(hoursInfo -> logger.info("║ " + hoursInfo));
+                                        + "\n║ open: " + hours.getOpeningTime()
+                                        + "\n║ close: " + hours.getClosingTime())
+                                .forEach(hoursInfo -> logger.info("\n║ " + hoursInfo));
                         break;
                     case 0:
                         break;

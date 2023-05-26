@@ -1,15 +1,11 @@
 package com.solvd.farm.building;
 
-public abstract class Building  {
+public abstract class Building implements ITemperatureControl {
     private String buildingName;
     private String headOfDepartment;
     private int Capacity;
     public boolean locked;
 
-    public void setLocked(boolean locked) {
-
-        this.locked = locked;
-    }
     public Building(String buildingName, String headOfDepartment, int capacity) {
         this.buildingName = buildingName;
         this.headOfDepartment = headOfDepartment;
@@ -27,16 +23,8 @@ public abstract class Building  {
         return Capacity;
     }
 
-    public void setBuildingName(String buildingName) {
-        this.buildingName = buildingName;
-    }
-
-    public void setHeadOfDepartment(String headOfDepartment) {
-        this.headOfDepartment = headOfDepartment;
-    }
-
-    public void setCapacity(int capacity) {
-        Capacity = capacity;
+    public void setLocked(boolean locked) {
+        this.locked = locked;
     }
 
     public abstract void nameOfHeadDepartment();

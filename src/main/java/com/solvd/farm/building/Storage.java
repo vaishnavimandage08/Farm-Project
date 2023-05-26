@@ -3,22 +3,21 @@ package com.solvd.farm.building;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Storage extends Building implements ITemperatureControl {
+public class Storage extends Building {
     private String type;
     public final int desiredTemp = 30;
-    public static double currentTemp;
 
     public Storage(String buildingName, String headOfDepartment, int capacity, String type) {
         super(buildingName, headOfDepartment, capacity);
         this.type = type;
     }
 
-    public String getType() {
-        return type;
+    public int getDesiredTemp() {
+        return desiredTemp;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public String getType() {
+        return type;
     }
 
     private static Logger logger = LogManager.getLogger(Storage.class);
@@ -29,13 +28,13 @@ public class Storage extends Building implements ITemperatureControl {
     }
 
     @Override
-    public void controlTemperature() {
+    public void setTemperature(int currentTemp) {
         if (currentTemp < desiredTemp) {
-            logger.info("temperature is already at desired level");
+            logger.info("Temperature is lower than desired");
         } else if (currentTemp > desiredTemp) {
-            logger.info("temperature is already at desired level");
+            logger.info("Temperature is higher than desired");
         } else {
-            logger.info("temperature is already at desired level");
+            logger.info("Temperature is perfect!");
         }
     }
 

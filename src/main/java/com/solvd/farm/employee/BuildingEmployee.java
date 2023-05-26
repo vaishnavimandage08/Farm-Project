@@ -17,16 +17,6 @@ public class BuildingEmployee extends Employee {
     }
 
     @Override
-    public void addExtraHours() {
-        int extraHours = (totalHours - EXPECTED_HOURS);
-        if (extraHours > 0) {
-            logger.info("Extra Hours " + extraHours);
-        } else {
-            logger.info("No Extra Hours");
-        }
-    }
-
-    @Override
     public void checkIn(LocalDateTime timeIn) {
 //        this.setTimeIn(timeIn);
         consumer.accept(timeIn);

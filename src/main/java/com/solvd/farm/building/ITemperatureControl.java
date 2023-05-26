@@ -1,4 +1,4 @@
 package com.solvd.farm.building;
 public interface ITemperatureControl {
-    void controlTemperature();
+    void setTemperature(int temperature);
 }
