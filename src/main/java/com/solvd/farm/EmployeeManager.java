@@ -76,11 +76,13 @@ public class EmployeeManager  {
                 case 3:
 //                    String list = "";
                     String list = employeeList.stream()
-                            .map(employee ->"id "+ employee.getEmployeeID() + " name: "+ employee.getName())
+                            .map(employee -> employee.getEmployeeID() + "  " + employee.getName())
                             .collect(Collectors.joining("\n"));
 
                     if (!list.equals("")) {
-                        list = "\n" + "id   " + "name" + "\n" + "" + list;
+                        list = "\n" + "id   " + "name"
+                                + "\n----------"
+                                + "\n" + list;
                         logger.info(list);
                     }
                     break;
