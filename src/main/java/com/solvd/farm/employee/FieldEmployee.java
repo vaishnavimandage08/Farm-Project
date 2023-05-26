@@ -17,20 +17,10 @@ public class FieldEmployee extends Employee {
     }
     @Override
     public void checkIn(LocalDateTime timeIn) {
-//        this.setTimeIn(timeIn);
         consumer.accept(timeIn);
     }
     @Override
     public void checkOut(LocalDateTime timeOut) {
         this.setTimeOut(timeOut);
-    }
-    @Override
-    public void addExtraHours() {
-        int extraHours = (totalHours - EXPECTED_HOURS);
-        if (extraHours > 0) {
-            logger.info("Extra Hours " + extraHours);
-        } else {
-            logger.info("No Extra Hours ");
-        }
     }
 }

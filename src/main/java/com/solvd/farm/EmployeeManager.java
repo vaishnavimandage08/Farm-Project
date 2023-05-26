@@ -59,9 +59,9 @@ public class EmployeeManager  {
                 case 2: {
                     logger.info("Enter your employee ID: ");
                     int inputId1 = scanner.nextInt();
-                    employeeList.stream().forEach(employee -> {
+                    employeeList.forEach(employee -> {
                         if (employee.getEmployeeID() == inputId1) {
-                            employee.setTimeOut(LocalDateTime.now());
+                            employee.checkOut(LocalDateTime.now());
                             logger.info("You have successfully checked out!");
                             long dif = ChronoUnit.MINUTES.between(employee.getTimeOut(), employee.getTimeIn());
                             if (dif < 0)
@@ -74,7 +74,6 @@ public class EmployeeManager  {
                 }
                     break;
                 case 3:
-//                    String list = "";
                     String list = employeeList.stream()
                             .map(employee -> employee.getEmployeeID() + "  " + employee.getName())
                             .collect(Collectors.joining("\n"));
@@ -93,9 +92,6 @@ public class EmployeeManager  {
             }
         }
     }
-    IDisplayOnly displayOnly = employee -> {
-        logger.info(employee.getEmployeeID() + "  " + employee.getName());
-    };
 }
 
 

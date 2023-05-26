@@ -6,7 +6,7 @@ import com.solvd.farm.IEqualIgnore;
 import java.time.LocalDateTime;
 import java.util.function.Consumer;
 
-public abstract class Employee implements ILogin, IExtraWorkingHours {
+public abstract class Employee implements ILogin {
     private String name;
     private String emailAddress;
     private long phoneNumber;

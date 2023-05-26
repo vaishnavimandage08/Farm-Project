@@ -99,13 +99,13 @@ public class ProductManager {
 
             productChoice = scanner.nextInt();
             scanner.nextLine();
+
             switch (productChoice) {
                 case 1:
-                    logger.info("\nAvailable Products : "
-                            + "\n--------------------");
-//                    String listToDisplay = "";
+                    String listToDisplay = "\nAvailable Products : "
+                            + "\n--------------------\n";
 
-                    String listToDisplay = cropList.stream()
+                    listToDisplay = listToDisplay + cropList.stream()
                             .map(crop -> "Name : " + crop.getName()
                                     + "\nPrice : $" + crop.getPrice()
                                     + "\n--------------------")
@@ -115,10 +115,10 @@ public class ProductManager {
 
                     break;
                 case 2:
-                    logger.info("\nAvailable Products : "
-                            + "\n--------------------");
-//                    listToDisplay = "";
-                    listToDisplay = dairyProductList.stream()
+                    listToDisplay = "\nAvailable Products : "
+                            + "\n--------------------\n";
+
+                    listToDisplay = listToDisplay + dairyProductList.stream()
                             .map(dairyProduct -> "Name : " + dairyProduct.getName()
                                     + "\nPrice : $" + dairyProduct.getPrice()
                                     + "\nFat content : " + dairyProduct.getFatContent()
@@ -150,7 +150,7 @@ public class ProductManager {
                                     .orElse(false));
 
                     try {
-                        if (cropCart.isEmpty() && dairyCart.isEmpty() ) {
+                        if (!isProductFound) {
                             throw new ItemNotFoundException("Error: Product not found..");
                         }
                     } catch (ItemNotFoundException e) {
