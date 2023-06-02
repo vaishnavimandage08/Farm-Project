@@ -1,26 +1,28 @@
 package com.solvd.farm;
+
 import com.solvd.farm.exception.NullValueException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 public class LinkedList<T> {
     private static final Logger logger = LogManager.getLogger(LinkedList.class);
 
     private Node head;
     private int size;
-
     private static class Node<T> {
         T data;
         Node<T> next;
+
         public Node(T data) {
             this.data = data;
             this.next = null;
         }
     }
+
     public LinkedList() {
         head = null;
         size = 0;
     }
+
     public void insertatend(T data) {
         Node node = new Node(data);
         if (head == null) {
@@ -59,6 +61,7 @@ public class LinkedList<T> {
             logger.info("Node is not present");
         }
     }
+
     public void printLinkedList() {
         if (head == null) {
             logger.info("can't delete a Linked list is empty");
@@ -70,21 +73,27 @@ public class LinkedList<T> {
             logger.info("null");
         }
     }
-    public void search(T data) {
+
+    public boolean search(String data) {
         Node<T> node = head;
-        while (node.next != null) {
-            if (node.data == data) {
-                logger.info("searched item" + node.data);
-                return;
+        if (head != null) {
+            while (node.next != null) {
+                if (node.data == data) {
+                    logger.info("searched item" + node.data);
+                }
+                node = node.next;
             }
-            node = node.next;
+            return true;
         }
-        logger.info("Item not found");
+//           logger.info("Item not found");
+        return false;
     }
+
     public void clear() {
         head = null;
         size = 0;
     }
+
     public int size() {
         return size;
     }
@@ -101,7 +110,6 @@ public class LinkedList<T> {
         for (int i = 0; i < index; i++) {
             currentNode = currentNode.next;
         }
-
         return currentNode.data;
     }
 }

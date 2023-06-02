@@ -58,8 +58,6 @@ public abstract class Employee implements ILogin {
         this.timeIn = timeIn;
     };
 
-
-
     public LocalDateTime getTimeIn() {
         return timeIn;
     }

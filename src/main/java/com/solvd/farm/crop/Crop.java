@@ -1,6 +1,5 @@
 package com.solvd.farm.crop;
 
-import java.util.Objects;
 import java.util.function.Predicate;
 
 public abstract class Crop  {

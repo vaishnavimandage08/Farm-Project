@@ -18,6 +18,13 @@ public class EmployeeManager  {
         employeeList = employee;
     }
 
+    public ArrayList<Employee> getEmployeeList() {
+        return employeeList;
+    }
+    public void setEmployeeList(ArrayList<Employee> employeeList) {
+        this.employeeList = employeeList;
+    }
+
     public void displayEmployeePortal() throws UserNotFoundException {
         Scanner scanner = new Scanner(System.in);
         int choice = -1;

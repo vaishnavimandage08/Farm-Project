@@ -1,6 +1,5 @@
 package com.solvd.farm.enums;
 
-
 public enum FarmHours {
     MONDAY("09:00", "18:00"),
     TUESDAY("09:00", "18:00"),

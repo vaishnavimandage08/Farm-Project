@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Vegetable extends Crop {
+    private static Logger logger = LogManager.getLogger(Vegetable.class);
     private int maturityTimeInDays;
     public Vegetable(String name, int price, double realizedRevenue, int maturityTimeInDays) {
         super(name, price, realizedRevenue);
@@ -16,8 +17,6 @@ public class Vegetable extends Crop {
     public int getMaturityTimeInDays() {
         return maturityTimeInDays;
     }
-
-    private static Logger logger = LogManager.getLogger(Vegetable.class);
 
     @Override
     public void nameOfCrops() {

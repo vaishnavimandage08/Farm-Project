@@ -2,11 +2,11 @@ package com.solvd.farm;
 
 import com.solvd.farm.crop.Crop;
 import com.solvd.farm.dairyproduct.DairyProduct;
+import com.solvd.farm.exception.DuplicateEntryException;
 import com.solvd.farm.exception.ItemNotFoundException;
 import com.solvd.farm.exception.NullValueException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -16,13 +16,42 @@ public class ProductManager {
     private ArrayList<Crop> cropList;
     private ArrayList<DairyProduct> dairyProductList;
 
-    LinkedList<Crop> cropCart = new LinkedList<>();
-    LinkedList<DairyProduct> dairyCart = new LinkedList<>();
+    private LinkedList<Crop> cropCart = new LinkedList<>();
+    private LinkedList<DairyProduct> dairyCart = new LinkedList<>();
 
     public ProductManager(ArrayList<Crop> cropData, ArrayList<DairyProduct> dairyProducts) {
-//        loadCropProducts(cropData);
         cropList = cropData;
         dairyProductList = dairyProducts;
+    }
+    public void setCropList(ArrayList<Crop> cropList) {
+        this.cropList = cropList;
+    }
+
+    public void setDairyProductList(ArrayList<DairyProduct> dairyProductList) {
+        this.dairyProductList = dairyProductList;
+    }
+    public void setCropCart(LinkedList<Crop> cropCart) {
+        this.cropCart = cropCart;
+    }
+
+    public void setDairyCart(LinkedList<DairyProduct> dairyCart) {
+        this.dairyCart = dairyCart;
+    }
+
+    public ArrayList<Crop> getCropList() {
+        return cropList;
+    }
+
+    public ArrayList<DairyProduct> getDairyProductList() {
+        return dairyProductList;
+    }
+
+    public LinkedList<Crop> getCropCart() {
+        return cropCart;
+    }
+
+    public LinkedList<DairyProduct> getDairyCart() {
+        return dairyCart;
     }
 
     public void displayProductPortal() throws ItemNotFoundException {
@@ -80,7 +109,6 @@ public class ProductManager {
             }
         }
     }
-
     private void browseProducts() {
         Scanner scanner = new Scanner(System.in);
         int productChoice = -1;
@@ -130,31 +158,33 @@ public class ProductManager {
                 case 3:
                     logger.info("Enter the product to add: ");
                     String productName = scanner.nextLine();
-
-                    boolean isProductFound = cropList.stream()
-                            .filter(crop -> crop.isEqual.test(productName))
-                            .findFirst()
-                            .map(crop -> {
-                                cropCart.insertatend(crop);
-                                logger.info(productName + " added to the cart.");
-                                return true;
-                            })
-                            .orElseGet(() -> dairyProductList.stream()
-                                    .filter(dairyProduct -> dairyProduct.isEqual.test(productName))
-                                    .findFirst()
-                                    .map(dairyProduct -> {
-                                        dairyCart.insertatend(dairyProduct);
-                                        logger.info(productName + " added to the cart.");
-                                        return true;
-                                    })
-                                    .orElse(false));
-
                     try {
+                        if (cropCart.search(productName) || dairyCart.search(productName)) {
+                            throw new DuplicateEntryException("Duplicate item found");
+                        }
+                        boolean isProductFound = cropList.stream()
+                                .filter(crop -> crop.isEqual.test(productName))
+                                .findFirst()
+                                .map(crop -> {
+                                    cropCart.insertatend(crop);
+                                    logger.info(productName + " added to the cart.");
+                                    return true;
+                                })
+                                .orElseGet(() -> dairyProductList.stream()
+                                        .filter(dairyProduct -> dairyProduct.isEqual.test(productName))
+                                        .findFirst()
+                                        .map(dairyProduct -> {
+                                            dairyCart.insertatend(dairyProduct);
+                                            logger.info(productName + " added to the cart.");
+                                            return true;
+                                        })
+                                        .orElse(false));
+
                         if (!isProductFound) {
                             throw new ItemNotFoundException("Error: Product not found..");
                         }
-                    } catch (ItemNotFoundException e) {
-                        logger.info("Error: Product not found..");
+                    } catch (ItemNotFoundException | DuplicateEntryException e) {
+                        logger.info("Error: " + e.getMessage());
                     }
                     break;
                 case 4:
@@ -184,7 +214,6 @@ public class ProductManager {
                     logger.info("Total Price: " + totalPrice);
                     cropCart.clear();
                     dairyCart.clear();
-
                     break;
                 case 0:
                     break;
@@ -193,5 +222,4 @@ public class ProductManager {
             }
         }
     }
-
 }

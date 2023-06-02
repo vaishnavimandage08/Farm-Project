@@ -4,6 +4,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Barn extends Building {
+
+    private static Logger logger = LogManager.getLogger(Barn.class);
     private boolean isClean;
     public final int desiredTemp = 50;
 
@@ -23,8 +25,6 @@ public class Barn extends Building {
     public int getDesiredTemp() {
         return desiredTemp;
     }
-
-    private static Logger logger = LogManager.getLogger(Barn.class);
 
     @Override
     public void nameOfHeadDepartment() {

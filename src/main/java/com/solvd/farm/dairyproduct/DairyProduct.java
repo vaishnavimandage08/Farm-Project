@@ -2,8 +2,6 @@ package com.solvd.farm.dairyproduct;
 
 import com.solvd.farm.IEqualIgnore;
 
-
-
 public abstract class DairyProduct {
     private int price;
     private double fatContent;
@@ -14,21 +12,27 @@ public abstract class DairyProduct {
         this.fatContent = fatContent;
         this.name = name;
     }
+
     public int getPrice() {
         return price;
     }
+
     public double getFatContent() {
         return fatContent;
     }
+
     public void setPrice(int quantity) {
         this.price = price;
     }
+
     public void setFatContent(double fatContent) {
         this.fatContent = fatContent;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public String getName() {
         return name;
     }

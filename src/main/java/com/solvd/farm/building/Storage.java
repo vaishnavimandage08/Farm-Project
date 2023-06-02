@@ -4,8 +4,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Storage extends Building {
+    private static final Logger logger = LogManager.getLogger(Storage.class);
     private String type;
     public final int desiredTemp = 30;
+
 
     public Storage(String buildingName, String headOfDepartment, int capacity, String type) {
         super(buildingName, headOfDepartment, capacity);
@@ -19,8 +21,9 @@ public class Storage extends Building {
     public String getType() {
         return type;
     }
-
-    private static Logger logger = LogManager.getLogger(Storage.class);
+    public void setType(String type) {
+        this.type = type;
+    }
 
     @Override
     public void nameOfHeadDepartment() {

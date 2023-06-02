@@ -4,19 +4,17 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Grain extends Crop {
+    private static Logger logger = LogManager.getLogger(Grain.class);
     private String nutritionalValue;
 
     public Grain(String name, int price, double realizedRevenue,  String nutritionalValue) {
         super(name, price, realizedRevenue);
         this.nutritionalValue = nutritionalValue;
     }
-    private static Logger logger = LogManager.getLogger(Grain.class);
-
 
     public String getNutritionalValue() {
         return nutritionalValue;
     }
-
 
     public void setNutritionalValue(String nutritionalValue) {
         this.nutritionalValue = nutritionalValue;

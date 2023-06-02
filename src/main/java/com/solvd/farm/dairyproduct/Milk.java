@@ -2,7 +2,6 @@ package com.solvd.farm.dairyproduct;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 public class Milk extends DairyProduct {
     private boolean pasteurized;
 

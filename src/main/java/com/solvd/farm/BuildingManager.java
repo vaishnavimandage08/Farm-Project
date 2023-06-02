@@ -1,7 +1,6 @@
 package com.solvd.farm;
 
 import com.solvd.farm.building.Building;
-import com.solvd.farm.building.Storage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
@@ -10,12 +9,9 @@ import java.util.Scanner;
 public class BuildingManager {
     private static final Logger logger = LogManager.getLogger(BuildingManager.class);
     private  ArrayList<Building> buildingList;
-
     public BuildingManager(ArrayList<Building> buildingList) {
         this.buildingList = buildingList;
     }
-
-
     public void displayBuildingPortal() {
         Scanner scanner = new Scanner(System.in);
         int choice = -1;

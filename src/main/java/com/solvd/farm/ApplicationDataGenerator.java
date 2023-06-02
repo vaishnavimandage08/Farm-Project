@@ -32,7 +32,6 @@ public class ApplicationDataGenerator {
                 700,
                 "Protein"));
 
-
         // Generate data using reflection
         // create an object of Grain Class
 
@@ -54,7 +53,7 @@ public class ApplicationDataGenerator {
         return data;
     }
 
-    public static ArrayList<DairyProduct> generateDairy()  {
+    public static ArrayList<DairyProduct> generateDairy() {
         ArrayList<DairyProduct> data = new ArrayList<>();
         Butter butter = new Butter(
                 "Salted Butter",
@@ -80,7 +79,7 @@ public class ApplicationDataGenerator {
         return data;
     }
 
-    public static ArrayList<Employee> generateEmployee()  {
+    public static ArrayList<Employee> generateEmployee() {
         ArrayList<Employee> data = new ArrayList<>();
         FieldEmployee fieldEmployee = new FieldEmployee(
                 "John",
@@ -125,5 +124,4 @@ public class ApplicationDataGenerator {
         data.add(barn);
         return data;
     }
-
 }
