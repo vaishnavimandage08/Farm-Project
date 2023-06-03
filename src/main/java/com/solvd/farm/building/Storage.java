@@ -8,7 +8,6 @@ public class Storage extends Building {
     private String type;
     public final int desiredTemp = 30;
 
-
     public Storage(String buildingName, String headOfDepartment, int capacity, String type) {
         super(buildingName, headOfDepartment, capacity);
         this.type = type;

@@ -5,9 +5,7 @@ import org.apache.logging.log4j.Logger;
 import java.time.LocalDateTime;
 
 public class BuildingEmployee extends Employee {
-    private static Logger logger = LogManager.getLogger(BuildingEmployee.class);
-
-    private String department;
+    private static final Logger logger = LogManager.getLogger(BuildingEmployee.class);
 
     public BuildingEmployee(String name, int employeeID, String emailAddress,  long phoneNumber) {
         super(name, emailAddress, phoneNumber, employeeID);
@@ -19,7 +17,6 @@ public class BuildingEmployee extends Employee {
 
     @Override
     public void checkIn(LocalDateTime timeIn) {
-//        this.setTimeIn(timeIn);
         consumer.accept(timeIn);
     }
 

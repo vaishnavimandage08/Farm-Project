@@ -13,7 +13,6 @@ public abstract class Employee implements ILogin {
     private int employeeID;
     private LocalDateTime timeIn;
     private LocalDateTime timeOut;
-    protected final int EXPECTED_HOURS = 6;
     public static int totalHours;
 
     public Employee(String name, String emailAddress, long phoneNumber, int employeeID) {
@@ -39,6 +38,14 @@ public abstract class Employee implements ILogin {
         return phoneNumber;
     }
 
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public void setPhoneNumber(long phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public void setTotalHours(int hours) {
         this.totalHours = hours;
     }
@@ -48,10 +55,6 @@ public abstract class Employee implements ILogin {
     }
 
     public abstract void employeeDetails();
-
-//    public void setTimeIn(LocalDateTime timeIn) {
-//        this.timeIn = timeIn;
-//    }
 
     // Consumer Interface
     public Consumer<LocalDateTime> consumer = (timeIn) -> {

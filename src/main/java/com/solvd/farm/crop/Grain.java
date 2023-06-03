@@ -4,7 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Grain extends Crop {
-    private static Logger logger = LogManager.getLogger(Grain.class);
+    private static final Logger logger = LogManager.getLogger(Grain.class);
     private String nutritionalValue;
 
     public Grain(String name, int price, double realizedRevenue,  String nutritionalValue) {
@@ -24,6 +24,5 @@ public class Grain extends Crop {
     public void nameOfCrops() {
         logger.info("The crop name: " + getName() + "\n price: " + getPrice() + "\nuses: " + nutritionalValue);
     }
-
 
 }

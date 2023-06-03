@@ -4,8 +4,6 @@ public class Connection {
     private int connectionId;
     private String connectionName;
 
-    //private ConnectionPool.ConnectionStatus status;
-
     public Connection(int connectionId, String connectionName) {
         this.connectionId = connectionId;
         this.connectionName = connectionName;

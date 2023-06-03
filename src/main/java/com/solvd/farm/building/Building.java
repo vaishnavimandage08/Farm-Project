@@ -30,6 +30,9 @@ public abstract class Building implements ITemperatureControl {
         return capacity;
     }
 
+    public boolean isLocked() {
+        return locked;
+    }
     public void setLocked(boolean locked) {
         this.locked = locked;
     }

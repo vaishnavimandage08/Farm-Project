@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 public class ConnectionPool {
     private static final Logger logger = LogManager.getLogger(ConnectionPool.class);
 
-    final int MAX_POOL_SIZE = 3;
+     final int MAX_POOL_SIZE = 3;
     private static ConnectionPool connectionPool;
 
     private int connectionNumber = 0;

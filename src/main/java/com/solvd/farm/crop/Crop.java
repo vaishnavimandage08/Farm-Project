@@ -5,12 +5,7 @@ import java.util.function.Predicate;
 public abstract class Crop  {
     private int price;
     private String name;
-    protected final double expectedRevenue = 2000;
     private double realizedRevenue;
-
-    public double getRealizedRevenue() {
-        return realizedRevenue;
-    }
 
     public Crop(String name, int price, double realizedRevenue) {
         this.price = price;
@@ -23,6 +18,12 @@ public abstract class Crop  {
     public int getPrice() {
         return price;
     }
+    public double getRealizedRevenue() {
+        return realizedRevenue;
+    }
+    public String getName() {
+        return name;
+    }
 
     public void setPrice(int price) {
         this.price = price;
@@ -31,16 +32,12 @@ public abstract class Crop  {
     public void setName(String name) {
         this.name = name;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public abstract void nameOfCrops();
-
     public void setRealizedRevenue(double realizedRevenue) {
         this.realizedRevenue = realizedRevenue;
     }
+
+
+    public abstract void nameOfCrops();
 
     public Predicate<String> isEqual = name -> this.name.equalsIgnoreCase(name);
 }

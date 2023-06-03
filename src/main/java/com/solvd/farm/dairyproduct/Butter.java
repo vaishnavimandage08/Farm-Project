@@ -3,7 +3,7 @@ package com.solvd.farm.dairyproduct;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 public class Butter extends DairyProduct {
-    private static Logger logger = LogManager.getLogger(Butter.class);
+    private static final Logger logger = LogManager.getLogger(Butter.class);
     private long expiryDate;
     public Butter(String type ,int price, double fatContent,  long expiryDate) {
         super(price, fatContent, type);

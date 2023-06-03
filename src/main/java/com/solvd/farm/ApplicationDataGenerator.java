@@ -5,6 +5,7 @@ import com.solvd.farm.building.Building;
 import com.solvd.farm.building.Storage;
 import com.solvd.farm.crop.Crop;
 import com.solvd.farm.crop.Grain;
+import com.solvd.farm.crop.Vegetable;
 import com.solvd.farm.dairyproduct.Butter;
 import com.solvd.farm.dairyproduct.Cheese;
 import com.solvd.farm.dairyproduct.DairyProduct;
@@ -122,6 +123,23 @@ public class ApplicationDataGenerator {
         storage.setLocked(true);
         barn.setLocked(false);
         data.add(barn);
+        return data;
+    }
+    public static ArrayList<Vegetable> generateVegetable() {
+        ArrayList<Vegetable> data = new ArrayList<>();
+        Vegetable vegetable = new Vegetable(
+                "Spinach",
+                2,
+                200,
+                6);
+        data.add(vegetable);
+
+         vegetable = new Vegetable(
+                "Broccoli",
+                3,
+                100,
+                4);
+        data.add(vegetable);
         return data;
     }
 }

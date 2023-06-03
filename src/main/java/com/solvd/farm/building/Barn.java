@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 public class Barn extends Building {
 
-    private static Logger logger = LogManager.getLogger(Barn.class);
+    private static final Logger logger = LogManager.getLogger(Barn.class);
     private boolean isClean;
     public final int desiredTemp = 50;
 

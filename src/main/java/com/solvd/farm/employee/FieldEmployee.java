@@ -6,8 +6,7 @@ import org.apache.logging.log4j.Logger;
 import java.time.LocalDateTime;
 
 public class FieldEmployee extends Employee {
-    private static Logger logger = LogManager.getLogger(FieldEmployee.class);
-    public int totalHours;
+    private static final Logger logger = LogManager.getLogger(FieldEmployee.class);
     public FieldEmployee(String name, int employeeID,String emailAddress, long phoneNumber) {
         super(name, emailAddress, phoneNumber, employeeID);
     }

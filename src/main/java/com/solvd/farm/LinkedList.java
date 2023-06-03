@@ -1,5 +1,6 @@
 package com.solvd.farm;
 
+import com.solvd.farm.crop.Crop;
 import com.solvd.farm.exception.NullValueException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -74,18 +75,15 @@ public class LinkedList<T> {
         }
     }
 
-    public boolean search(String data) {
+    public boolean search(Object data) {
         Node<T> node = head;
-        if (head != null) {
-            while (node.next != null) {
-                if (node.data == data) {
-                    logger.info("searched item" + node.data);
-                }
-                node = node.next;
+        while (node != null) {
+            if (node.data == data) {
+                logger.info("searched item" + node.data);
+                return true;
             }
-            return true;
+            node = node.next;
         }
-//           logger.info("Item not found");
         return false;
     }
 

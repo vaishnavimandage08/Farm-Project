@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class BuildingManager {
     private static final Logger logger = LogManager.getLogger(BuildingManager.class);
-    private  ArrayList<Building> buildingList;
+    private final ArrayList<Building> buildingList;
     public BuildingManager(ArrayList<Building> buildingList) {
         this.buildingList = buildingList;
     }

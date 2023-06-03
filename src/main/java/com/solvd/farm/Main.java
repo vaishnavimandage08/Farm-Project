@@ -21,7 +21,7 @@ public class Main {
         ProductManager productManager = null;
 
         try {
-            productManager = new ProductManager(ApplicationDataGenerator.generateCrop(), ApplicationDataGenerator.generateDairy());
+            productManager = new ProductManager(ApplicationDataGenerator.generateCrop(), ApplicationDataGenerator.generateDairy(), ApplicationDataGenerator.generateVegetable());
         } catch (Exception exception) {
             logger.error("Failed to load application data. " + exception);
         }
