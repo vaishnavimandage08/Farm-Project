@@ -1,6 +1,5 @@
 package com.solvd.farm;
 
-import com.solvd.farm.crop.Crop;
 import com.solvd.farm.exception.NullValueException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -100,7 +99,7 @@ public class LinkedList<T> {
         return head == null;
     }
 
-    public T get(int index) throws NullValueException {
+    public T get(int index) throws NullPointerException {
         Node<T> currentNode = head;
         if (index < 0 && index > size) {
             throw new NullValueException("Invalid Index");
